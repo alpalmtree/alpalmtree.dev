@@ -1,0 +1,11 @@
+{
+  "tasks": {
+    "dev": "deno run  -A --watch lib/mod.js",
+    "build": "deno run -A lib/mod.js build"
+  },
+  "imports": {
+   "@std/http": "jsr:@std/http@^1.0.18",
+   "edge.js": "npm:edge.js",
+   "#types": "./lib/types.d.ts"
+  }
+}
