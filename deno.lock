@@ -13,7 +13,8 @@
     "jsr:@std/net@^1.0.4": "1.0.4",
     "jsr:@std/path@^1.1.0": "1.1.0",
     "jsr:@std/streams@^1.0.10": "1.0.10",
-    "npm:edge.js@*": "6.2.1"
+    "npm:edge.js@*": "6.2.1",
+    "npm:snarkdown@*": "2.0.0"
   },
   "jsr": {
     "@std/cli@1.0.20": {
@@ -190,6 +191,9 @@
     },
     "slugify@1.6.6": {
       "integrity": "sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw=="
+    },
+    "snarkdown@2.0.0": {
+      "integrity": "sha512-MgL/7k/AZdXCTJiNgrO7chgDqaB9FGM/1Tvlcenenb7div6obaDATzs16JhFyHHBGodHT3B7RzRc5qk8pFhg3A=="
     },
     "stringify-attributes@4.0.0": {
       "integrity": "sha512-6Hq3K153wTTfhEHb4V/viuqmb0DRn08JCrRnmqc4Q/tmoNuvd4DEyqkiiJXtvVz8ZSUhlCQr7zCpCVTgrelesg==",

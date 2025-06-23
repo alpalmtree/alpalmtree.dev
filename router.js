@@ -1,4 +1,8 @@
 import { render } from "./lib/helpers.js";
+import snarkdown from 'npm:snarkdown';
+import { posts } from "./services/posts.service.js";
+
+
 
 /** @type {import('#types').Router} */
 export default [
@@ -18,13 +22,31 @@ export default [
     },
     {
         path: "/explore/:tag/",
-        staticPaths: () => {
-            const tags = ["hello", "world", "whatever"]
+        staticPaths: async () => {
+            const { default: taxonomies } = await import("./blog/taxonomies.js")
 
-            return tags.map(tag => ({ tag })) 
+            return taxonomies.tags.map(tag => ({ tag })) 
         },
         handler: async (ctx) => {
            return await render("$tag", ctx.params)
         }
     },
+    {
+        path: "/blog/:slug/",
+        staticPaths: () => {  
+            return Object.values(posts.all).map(post => ({
+                slug: post.default.slug
+            }))
+
+        },
+        handler: async (ctx) => {
+            const { default: metadata } = await import(`${Deno.cwd()}/blog/${ctx.params.slug}/metadata.js`);
+            const content = Deno.readTextFileSync(`${Deno.cwd()}/blog/${ctx.params.slug}/post.md`)
+
+            return await render("$post", {
+                post: metadata,
+                content: snarkdown(content)
+            })
+        }
+    }
 ]
