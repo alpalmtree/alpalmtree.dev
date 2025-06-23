@@ -1,8 +1,6 @@
 import { render } from "./lib/helpers.js";
 import snarkdown from 'npm:snarkdown';
-import { posts } from "./services/posts.service.js";
-
-
+import { slugs } from "./services/posts.service.js";
 
 /** @type {import('#types').Router} */
 export default [
@@ -34,9 +32,7 @@ export default [
     {
         path: "/blog/:slug/",
         staticPaths: () => {  
-            return Object.values(posts.all).map(post => ({
-                slug: post.default.slug
-            }))
+            return slugs
 
         },
         handler: async (ctx) => {

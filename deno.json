@@ -1,11 +1,16 @@
 {
+  "nodeModulesDir": "auto",
   "tasks": {
     "dev": "deno run  -A --watch lib/mod.js",
-    "build": "deno run -A lib/mod.js build"
+    "build": "deno run -A lib/mod.js build",
+    "img": "deno run -A scripts/imageProcessing.js"
   },
   "imports": {
    "@std/http": "jsr:@std/http@^1.0.18",
    "edge.js": "npm:edge.js",
-   "#types": "./lib/types.d.ts"
+   "#types": "./lib/types.d.ts",
+   "canvas": "npm:canvas",
+   "ditherjs": "/lib/vendor/dither.js",
+   "sharp": "npm:sharp@^0.34.2"
   }
 }
