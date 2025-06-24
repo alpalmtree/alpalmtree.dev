@@ -1,5 +1,5 @@
 import { render } from "./lib/helpers.js";
-import snarkdown from 'npm:snarkdown';
+import { marked } from "npm:marked";
 import { slugs } from "./services/posts.service.js";
 
 /** @type {import('#types').Router} */
@@ -41,7 +41,7 @@ export default [
 
             return await render("$post", {
                 post: metadata,
-                content: snarkdown(content)
+                content: marked.parse(content)
             })
         }
     }

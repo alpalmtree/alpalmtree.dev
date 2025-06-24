@@ -1,0 +1,6 @@
+@let(baseSrc = `/resources/images/${ src.startsWith("/") ? src.slice(1) : src }/img_`)
+
+<img 
+    srcset="{{ baseSrc }}lg.webp 950w, {{ baseSrc }}md.webp 700w, {{ baseSrc }}sm.webp 411w"
+    sizes="(min-width: 1000px) 950px, 100%"
+    alt="{{ alt }}">

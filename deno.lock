@@ -31,6 +31,7 @@
     "npm:@types/node@*": "22.15.15",
     "npm:canvas@*": "3.1.1",
     "npm:edge.js@*": "6.2.1",
+    "npm:marked@*": "15.0.12",
     "npm:sharp@~0.34.2": "0.34.2",
     "npm:snarkdown@*": "2.0.0"
   },
@@ -498,6 +499,10 @@
     "js-stringify@1.0.2": {
       "integrity": "sha512-rtS5ATOo2Q5k1G+DADISilDA6lv79zIiwFd6CcjuIxGKLFm5C+RLImRscVap9k55i+MOZwgliw+NejvkLuGD5g=="
     },
+    "marked@15.0.12": {
+      "integrity": "sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==",
+      "bin": true
+    },
     "mimic-response@3.1.0": {
       "integrity": "sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ=="
     },
@@ -699,6 +704,7 @@
     }
   },
   "remote": {
+    "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js": "29e25cdf1a06075c90e9885af06ddd23fb22a5424ed23a61dda986c73a8af641",
     "https://deno.land/x/jml@v0.0.2/mod.ts": "7e1618aa0c300a164974d6257433791515d1c1cb5c51b1e8f0f56908b7eed868",
     "https://deno.land/x/jml@v0.0.2/src/html.ts": "1ac73f32f9baff1b8d24ef805afd2ce9c38f21a359060357adad4352be35632c"
   },
