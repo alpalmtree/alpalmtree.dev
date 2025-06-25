@@ -1,3 +1,10 @@
 @layouts.main()
-    <h1>Welcome</h1>
+    @slot('styles')
+        {{{ $.css('pages/home') }}}
+    @end
+
+    <section class="hero">
+        <h1>Welcome</h1>
+        <p class="lede">Opinions here are <i>mine</i>, but hopefully, they represent you as well.</p>
+    </section>
 @end

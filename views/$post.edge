@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }}</title>
-    <link rel="stylesheet" href="{{$helpers.asset("css/main.css") }}">
+    <title>{{ post.title }} | Al's garden</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
+    <meta name="description" content="{{ post.description }}">
+    {{{ $.css("reset") }}}
+    {{{ $.css('variables') }}}
+    {{{ $.css("main") }}}
+    {{{ $.component("x-toggle") }}}
 </head>
 
 <body>
-   <main>
-       <article class="flow">
-         <h1>{{ post.title }}</h1>
-        <p class="lede">{{ post.description }}</p>
-        @!image({ src: "blog/with-humans-i-stand", alt: "test "})
-        {{{ content }}}
-       </article>
-   </main>
+    @!ui.header()
+    <main>
+        <article class="flow">
+            <h1>{{ post.title }}</h1>
+            <p class="lede">{{ post.description }}</p>
+            @!image({ src: "blog/with-humans-i-stand", alt: "test "})
+            {{{ content }}}
+        </article>
+    </main>
 </body>
 
 </html>

@@ -7,11 +7,21 @@
     <title>Al's garden</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
-    <link rel="stylesheet" href="{{ $helpers.asset('css/main.css') }}">
+    {{{ $.css("reset") }}}
+    {{{ $.css('variables') }}}
+    {{{ $.css("main") }}}
+    {{{ $.component("x-toggle") }}}
+    {{{ await $slots.styles?.() ?? "" }}}
+    {{{ await $slots.scripts?.() ?? "" }}}
+    {{{ await $slots.components?.() ?? "" }}}
+
 </head>
 
 <body>
-    {{{ await $slots.main() }}}
+    @!ui.header()
+    <main class="container">
+        {{{ await $slots.main() }}}
+    </main>
 </body>
 
 </html>
