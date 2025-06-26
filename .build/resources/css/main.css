@@ -6,12 +6,6 @@ body {
   font-family: Georgia, serif;
   font-size: var(--size-step-0);
   line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  
-  & > * {
-    width: 100%;
-  }
 
   & > *:not(header) {
     padding: 2em;
@@ -95,10 +89,6 @@ a:not(.logo) {
   --flow-space: 2em;
 }
 
-.logo {
-  font-size: var(--size-step-3);
-}
-
 header nav {
   font-size: var(--size-step-1);
   padding: 1rem;
@@ -113,29 +103,6 @@ header nav {
   }
 }
 
-footer {
-  margin-top: auto;
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  ul {
-    padding: 0;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-}
-
 @view-transition {
     navigation: auto;
 }
-
-/* Customize the default animation behavior */
-
-::view-transition-group(root) {
-    animation-duration: 0.3s;
-}
-
