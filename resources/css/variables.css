@@ -5,6 +5,8 @@
   --size-step-3: clamp(1.95rem, calc(1.71rem + 1.24vw), 2.66rem);
   --size-step-4: clamp(2.44rem, calc(2.05rem + 1.93vw), 3.55rem);
   --color-highlight: #8e3e0046;
+  --font-serif: Georgia, serif;
+  --font-sans-serif: system-ui, sans-serif;
 }
 
 [data-theme="light"],
