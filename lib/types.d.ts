@@ -25,3 +25,5 @@ export type Metadata = {
         alt: string
     }
 }
+
+export type MetadataArray = Array<Metadata>
