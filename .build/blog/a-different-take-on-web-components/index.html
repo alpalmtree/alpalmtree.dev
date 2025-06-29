@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A different take on Web Components | Al's garden</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
+    <meta name="description" content="Web Components are scary for some people, disappointing for some others and even &quot;the React killer&quot; for a handful of us. What if we shift the mental model?">
+    
+            <link rel="stylesheet" href="/resources/css/reset.css?rel=1751194888902">
+        
+    
+            <link rel="stylesheet" href="/resources/css/variables.css?rel=1751194888902">
+        
+    
+            <link rel="stylesheet" href="/resources/css/main.css?rel=1751194888902">
+        
+    
+            <link rel="stylesheet" href="/resources/components/x-toggle/component.css?rel=1751194888902">
+            <script type="module" src="/resources/components/x-toggle/component.js?rel=1751194888902"></script>
+        
+    
+            <link rel="stylesheet" href="/resources/components/code-hl/component.css?rel=1751194888902">
+            <script type="module" src="/resources/components/code-hl/component.js?rel=1751194888902"></script>
+        
+    
+            <link rel="stylesheet" href="/resources/components/copy-code/component.css?rel=1751194888902">
+            <script type="module" src="/resources/components/copy-code/component.js?rel=1751194888902"></script>
+        
+    <link rel="stylesheet" href="/resources/vendor/speed-highlight/themes/github-dark.css?rel=1751194888903">
+</head>
+
+<body><header class="container lg">
+    <nav>
+        <ul role="list">
+            <li><a href="/" class="logo" aria-label="Link to home">🍂</a></li>
+        </ul>
+        <ul role="list">
+            <li><a href="/explore/">Explore</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><x-toggle>
+  <label>
+    <!-- From Uiverse.io by JkHuger -->
+    <input class="toggle-checkbox" type="checkbox" name="dark-light" aria-label="swith dark/light mode"/>
+    <div class="toggle-slot">
+      <div class="sun-icon-wrapper">
+        <div
+          class="iconify sun-icon"
+          data-icon="feather-sun"
+          data-inline="false"
+        >
+        </div>
+      </div>
+      <div class="toggle-button"></div>
+      <div class="moon-icon-wrapper">
+        <div
+          class="iconify moon-icon"
+          data-icon="feather-moon"
+          data-inline="false"
+        >
+        </div>
+      </div>
+    </div>
+  </label>
+</x-toggle>
+            </li>
+        </ul>
+    </nav>
+</header>
+    <main>
+        <article class="flow">
+            <h1>A different take on Web Components</h1>
+            <p class="lede">Web Components are scary for some people, disappointing for some others and even &quot;the React killer&quot; for a handful of us. What if we shift the mental model?</p>
+<img 
+    srcset="/resources/images/blog/a-different-take-on-web-components/img_lg.webp 950w, /resources/images/blog/a-different-take-on-web-components/img_md.webp 700w, /resources/images/blog/a-different-take-on-web-components/img_sm.webp 411w"
+    sizes="(min-width: 1000px) 950px, 100%"
+    alt="Black and white, dithered image of a lego brick inserted in the middle of a bigger lego flat base.">
+            <p>Honestly, I believe there&#39;s no middle ground: web components are either over or underrated. While some people state <a href="https://dev.to/ryansolid/web-components-are-not-the-future-48bh">that the cost of Web Components</a> is not worth the use case, some others state that &quot;you don&#39;t need React (or any other frontend framework) anymore&quot;.</p>
+<p>Actually, yes, there is a middle ground of course. Don&#39;t blindly believe strangers on the internet. Not so long ago I came across <a href="https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/">this article</a> talking about what Web Components are good at — and it does have a great point. There are few articles in this line, I&#39;d recommend you do a little research on the topic.</p>
+<p>However, most literature I read on the internet makes the mistake, from my point of view, of comparing Web Components with other libraries (hereafter, <em>React</em>, since it&#39;s much more ergonomic to write than <em>&lt;insert_your_framework_here&gt;</em>). I believe this is intrinsically wrong, since Web Components are a technology (or better yet, a <strong>group of technologies</strong>) native to the web platform; and as such, we can have a lot of different use cases — so the list of &quot;what are web components good at&quot; grows with every case that works for you.</p>
+<p>If you are totally new to Web Components, I&#39;d highly recommend following any tutorial you find out there and then revisiting this post. Anything works, really. There is a <strong>heck of a lot</strong> of articles and videos on this subject. Pick your favorite content creator and most certainly they&#39;ll have a video/article about Web Components. Trust me (or don&#39;t, I&#39;m just another stranger on the internet).</p>
+<h2>The three pillars: Shadow DOM, <code>template</code> element and Custom Elements</h2>
+<p>Web components are the name given to this set of native technologies available in modern browsers. Probably, Custom Elements would be at the basic level of the Web Components <a href="https://en.wikipedia.org/wiki/Prototype_theory">prototype</a>. As such, most literature out there focuses and exemplifies use cases with Custom Elements.</p>
+<h3>Shadow DOM</h3>
+<p>Broadly speaking, the Shadow DOM API allows you to create a sort of scope inside an HTMLElement (yes, HTMLElement, not necessarily a custom element). You can read more about it <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">in MDN&#39;s documentation</a>.</p>
+<p>This is typically used together with Custom Elements because is a great way of providing our beloved encapsulation we see in React (or &lt;your_framework_here&gt;, remember). When attaching a shadow DOM to an HTMLElement:</p>
+<code-hl group="shadow-dom" name="app.js" open>
+
+<pre><code class="language-js">const appRoot = document.getElementById(&quot;app-root&quot;);
+
+appRoot.attachShadow({ mode: &quot;open&quot; });
+const paragraph = document.createElement(&quot;p&quot;);
+paragraph.textContent = &quot;Inside shadow DOM&quot;;
+
+// Notice how we are appending it to the shadowRoot property, created with the attachShadow method
+appRoot.shadowRoot.appendChild(paragraph);
+
+// appRoot.appendChild(paragraph) --&gt; would work, but it won&#39;t be visible in the browser.
+</code></pre>
+</code-hl>
+
+<code-hl group="shadow-dom" name="app.html">
+
+<pre><code class="language-html">&lt;p&gt;Outside shadow DOM&lt;/p&gt;
+&lt;div id=&quot;app-root&quot;&gt;&lt;/div&gt;
+</code></pre>
+</code-hl>
+
+<p>We can see the following in our browser&#39;s inspector:</p>
+<code-hl>
+
+<pre><code class="language-html">&lt;p&gt;Outside shadow DOM&lt;/p&gt;
+&lt;div id=&quot;app-root&quot;&gt;
+  #shadow-root (open)
+    &lt;p&gt;Inside shadow DOM&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</code-hl>
+
+<p>As you might have (at least partially) guessed, statements like the following won&#39;t affect the paragraph contained inside the <code>shadowRoot</code> of the element:</p>
+<code-hl>
+
+<pre><code class="language-html">&lt;style&gt;
+  p {
+    color: red;
+  }
+&lt;/style&gt;
+&lt;script type=&quot;module&quot;&gt;
+  document
+    .querySelectorAll(&quot;p&quot;)
+    .forEach(
+      (p) =&gt; (p.textContent = &quot;Modified from JS&quot;)
+    );
+&lt;/script&gt;
+</code></pre>
+</code-hl>
+
+
+<p>That&#39;s cool, isn&#39;t it? You should know, however, that the shadow DOM comes with a few quirks of its own. I highly recommend reading this article about <a href="https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/">shadow DOM and a11y</a> and this other one about <a href="https://www.matuzo.at/blog/2023/pros-and-cons-of-shadow-dom">issues with styles encapsulation</a>.</p>
+<p>Overall, I&#39;d argue it&#39;s a rather useful technology, but you can totally avoid it, and it&#39;d be ok. No one is going to web-component-shame you for not using it (and if they do, they are not your friends). It&#39;s definitely got its <strong>lights and shadows</strong> (<em>BA DUM TSS</em>).</p>
+<h3>The <code>template</code> element</h3>
+<p>Looking at the example above (or if you are used to creating elements in vanilla JS), we can very easily see how creating and attaching elements to the DOM can be pretty boilerplate-ish. This is one of the reasons why we have the <code>template</code> element. While you could still create one and setting its <code>innerHTML</code> via JavaScript, they allow for pretty interesting patterns. Learn more about it <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template">on MDN&#39;s documentation</a>.</p>
+<p>The most interesting bit, I&#39;d argue, is the fact that even if they exist in the DOM, they won&#39;t be visible until you append it somehow (either manually or using the declarative shadow DOM). In case you want the content that you will later append to exist in the DOM (for instance, if you are server-side-rendering/statically-generating it), your users won&#39;t see any flashed content neither you have to worry about using any workaround (classic AngularJS&#39; <code>ng-cloak</code>, if you know what I mean).</p>
+<code-hl group="template" name="app.js" open>
+
+<pre><code class="language-js">const appRoot = document.getElementById(&quot;app-root&quot;);
+const form = document.getElementById(&quot;hi-form&quot;);
+const messageTemplate = document.getElementById(&quot;message-template&quot;);
+
+form.addEventListener(&quot;submit&quot;, (e) =&gt; {
+  e.preventDefault();
+  const name = new FormData(e.target).get(&quot;name&quot;);
+  e.target.reset();
+
+  const message = messageTemplate.content.cloneNode(true);
+  message.querySelector(&quot;strong&quot;).textContent = name;
+
+  appRoot.querySelector(&quot;p&quot;)?.replaceWith(message);
+});
+
+const initialMessage = messageTemplate.content.cloneNode(true);
+initialMessage.querySelector(&quot;strong&quot;).textContent = &quot;stranger&quot;;
+appRoot.appendChild(initialMessage);
+</code></pre>
+</code-hl>
+
+<code-hl group="template" name="app.html">
+
+<pre><code class="language-html">&lt;div id=&quot;app-root&quot;&gt;
+    &lt;form action=&quot;#&quot; id=&quot;hi-form&quot;&gt;
+        &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
+        &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+&lt;template id=&quot;message-template&quot;&gt;
+    &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+</code-hl>
+
+<p>Creating elements with <code>document.createElement</code> and manipulating the attributes and properties imperatively is still slightly faster, but this allows for &quot;server side rendering&quot; some content that you will later use via JavaScript, with a much cleaner approach; and much safer and performant than setting the <code>innerHTML</code> property (as we can see in several Web Components tutorials out there).</p>
+<h4>The <code>template</code> element and the shadow DOM</h4>
+<p>If you found the two technologies useful so far, I have great news: they DO pair <strong>very</strong> well, allowing even for more complex composition while not having to write a single line of JavaScript:</p>
+<code-hl group="template-shadow" name="app.html" open>
+
+<pre><code class="language-html">&lt;div id=&quot;app-root&quot;&gt;
+    &lt;p&gt;
+      I belong to the light DOM and I&#39;ll be placed between two red paragraphs
+    &lt;/p&gt;
+
+    &lt;template shadowrootmode=&quot;open&quot;&gt;
+      &lt;style&gt;
+        p {
+          color: red;
+        }
+      &lt;/style&gt;
+
+      &lt;p&gt;I belong to the shadow DOM and hence I&#39;m red&lt;/p&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+      &lt;p&gt;I also belong to the shadow DOM&lt;/p&gt;
+    &lt;/template&gt;
+&lt;/div&gt;
+</code></pre>
+</code-hl>
+
+<code-hl group="template-shadow" name="app.js">
+
+<pre><code class="language-js">// we are referencing the shadow root directly,
+// attached automatically by the browser thanks
+// to the &quot;shadowrootmode&quot; attribute
+const appRoot = document.getElementById(&quot;app-root&quot;).shadowRoot;
+
+// Length: 2
+const shadowParagraphs = appRoot.querySelectorAll(&quot;p&quot;);
+// Length: 1
+const lightDOMParagraphs = document.querySelectorAll(&quot;p&quot;);
+</code></pre>
+</code-hl>
+
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot"><code>slot</code></a> element is our friend here. Notice that it comes with a few quirks as well, but as a rule of thumb: whatever is slotted, will be in the light DOM, while the template itself will be in the shadow DOM. This allows for pretty interesting patterns, where you can compose some base layout with encapsulated logic and styles and snap in there your elements from the light DOM.</p>
+<h3>Custom Elements</h3>
+<p>Now that I hope I made my point clear, let&#39;s dive right into the <em>good sauce</em>. As you hopefully have learned already, the three technologies can be perfectly decoupled and used as stand-alone solutions for problems you may encounter in your day-to-day <strong>vanilla JS apps</strong>.</p>
+<p>Why the nuance? Well, let&#39;s remember that Web Components are (altogether) a mechanism baked right into the web platform, much like a <code>querySelector</code> or a <code>MutationObserver</code>. As such, they aim at solving problems that might or might not be solved already by another framework or library. Take the encapsulation for instance. If you are using <em>React</em>, most certainly there is a solution for that already (single file components, CSS modules, classes or functions for the logic...). Of course, also for the &quot;write declarative HTML and re-use it via JavaScript&quot;-bit. Custom element are no different.</p>
+<p>As stated in the foreword of this post, there is <strong>a heck of a lot</strong> of articles written about Custom Elements (usually, under the namespace of Web Components, even though, as we already know, it&#39;s just one of the corners of the triangle). Let me try to shift the mindset a bit. I&#39;m not going to talk about reusable components, but at what they are good at if we isolate them from the Web Components trio.</p>
+<h4>Declaratively hydrating parts of your application</h4>
+<p>The &quot;confusion&quot; (or merely coining by the community) of the concept <em>Web Components</em> as interchangeable with <em>Custom Elements</em> have led to a very interesting concept: <em>HTML Web Components</em>. I believe <a href="https://adactio.com/journal/20618">this article</a> is a pretty good summary of this concept.</p>
+<p>Simply put: you don&#39;t (necessarily) have to use <code>template</code>s, the shadow DOM or do any sort of client side rendering. You just use custom elements to wrap a piece of HTML and hydrate it. What a good-old <code>querySelector</code> would do, but on steroids. Let&#39;s put an example by making one of the previous examples a tiny little bit more complicated:</p>
+<code-hl group="custom-elements" name="app.html" open>
+
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Some static content&lt;/li&gt;
+        &lt;li&gt;
+          &lt;input
+            id=&quot;toggle-schema&quot;
+            type=&quot;checkbox&quot;
+            aria-label=&quot;toggle dark and light mode&quot;
+          /&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;div id=&quot;app-root&quot;&gt;
+    &lt;form action=&quot;#&quot; id=&quot;hi-form&quot;&gt;
+      &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
+      &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+  &lt;template id=&quot;message-template&quot;&gt;
+    &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/body&gt;
+</code></pre>
+</code-hl>
+
+<code-hl group="custom-elements" name="app.js">
+
+<pre><code class="language-js">const toggleSchema = document.getElementById(&quot;toggle-schema&quot;);
+const appRoot = document.getElementById(&quot;app-root&quot;);
+const form = document.getElementById(&quot;hi-form&quot;);
+const messageTemplate = document.getElementById(&quot;message-template&quot;);
+
+const doToggle = (toggle) =&gt; {
+  document.body.dataset.theme = toggle.checked ? &quot;dark&quot; : &quot;light&quot;;
+};
+
+const createMessage = (text) =&gt; {
+  const message = messageTemplate.content.cloneNode(true);
+  message.querySelector(&quot;strong&quot;).textContent = text;
+  appRoot.querySelector(&quot;p&quot;)?.replaceWith(message) ??
+    appRoot.appendChild(message);
+};
+
+toggleSchema.addEventListener(&quot;change&quot;, ({ target }) =&gt; {
+  doToggle(target);
+});
+
+form.addEventListener(&quot;submit&quot;, (e) =&gt; {
+  e.preventDefault();
+  const name = new FormData(e.target).get(&quot;name&quot;);
+  e.target.reset();
+
+  createMessage(name);
+});
+
+// Setting some initial state imperatively when the document loads
+doToggle(toggleSchema);
+createMessage(&quot;stranger&quot;);
+</code></pre>
+</code-hl>
+
+<p>There are few things I&#39;d like to highlight. Keep in mind that this example is extremely simple, let us imagine we have a much larger application:</p>
+<ol>
+<li>Even though we have clearly separated hydration regions, we are still looking in the whole DOM. We could still select the specific regions (<code>nav</code>, <code>div#app-root</code>) and then select elements inside, but it can get pretty boilerplate-ish.</li>
+<li>We are manually/imperatively initializing everything.</li>
+<li>Should any element not be present in the DOM by the time of the execution of the script, it would be ignored, and we should account for any DOM mutation if we want our new elements to be hydrated. Imagine that our template element had any logic inside or that you are sending the <code>appRoot</code> element &quot;over the wire&quot;, with solutions like <a href="https://turbo.hotwired.dev/">Turbo</a> or <a href="https://htmx.org/">HTMX</a>.</li>
+<li>Overall, we are writing a script with global variables and a step-by-step declaration. This is fine and can be mitigated by taking some architectural decisions, but still. If you wanted to start in a single file and then move the logic to separate files, you&#39;d for sure need a refactor.</li>
+</ol>
+<p>Let&#39;s now see the same example using Custom Elements:</p>
+<code-hl group="custom-elements-2" name="app.html" open>
+
+<pre><code class="language-html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Some static content&lt;/li&gt;
+        &lt;li&gt;
+          &lt;toggle-element&gt;
+            &lt;input
+              id=&quot;toggle-schema&quot;
+              type=&quot;checkbox&quot;
+              aria-label=&quot;toggle dark and light mode&quot;
+            /&gt;
+          &lt;/toggle-element&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;app-root&gt;
+    &lt;form action=&quot;#&quot;&gt;
+      &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
+      &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;!-- We have moved the template inside the custom element for convenience --&gt;
+    &lt;template id=&quot;message-template&quot;&gt;
+      &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
+    &lt;/template&gt;
+  &lt;/app-root&gt;
+&lt;/body&gt;
+</code></pre>
+</code-hl>
+
+<code-hl group="custom-elements-2" name="app.js">
+
+<pre><code class="language-js">customElements.define(
+  &quot;toggle-element&quot;,
+  class extends HTMLElement {
+    toggle = this.querySelector(&quot;input[type=checkbox]&quot;);
+    doToggle = () =&gt; {
+      document.body.dataset.theme = this.toggle.checked ? &quot;dark&quot; : &quot;light&quot;;
+    };
+
+    connectedCallback() {
+      this.doToggle();
+      this.addEventListener(&quot;change&quot;, this.doToggle);
+    }
+  }
+);
+
+customElements.define(
+  &quot;app-root&quot;,
+  class extends HTMLElement {
+    form = this.querySelector(&quot;form&quot;);
+    messageTemplate = this.querySelector(&quot;template&quot;);
+
+    createMessage = (text) =&gt; {
+      const message = this.messageTemplate.content.cloneNode(true);
+      message.querySelector(&quot;strong&quot;).textContent = text;
+      this.querySelector(&quot;p&quot;)?.replaceWith(message) ??
+        this.appendChild(message);
+    };
+
+    connectedCallback() {
+      this.createMessage(&quot;stranger&quot;);
+      this.form.addEventListener(&quot;submit&quot;, (e) =&gt; {
+        e.preventDefault();
+        const name = new FormData(e.target).get(&quot;name&quot;);
+        e.target.reset();
+
+        this.createMessage(name);
+      });
+    }
+  }
+);
+</code></pre>
+</code-hl>
+
+<p>With this approach:</p>
+<ol>
+<li>The regions are clearly defined by their respective custom elements wrapper.</li>
+<li>The code is &quot;better organized&quot; (I reckon it&#39;s also a matter of taste). Each function for manipulating the DOM as well as the references belong to an actual HTML Element that we called <code>toggle-element</code> and <code>app-root</code>. They are contained inside each instance and hence not polluting the global scope.</li>
+<li>Since we are selecting them from the Custom Element, we can have much looser selectors. It is much more unlikely that we add an element with the same selector inside a custom element than in the DOM in general.</li>
+<li>They are <em>actual</em> DOM elements. While this can come with few downsides, it&#39;s worth noticing that <code>document.querySelector(&quot;toggle-element&quot;).doToggle()</code> is as valid as accessing any other method native of a DOM element. This allows for pretty interesting state sharing that we should resolve via prop drilling or global state management in <em>React</em>.</li>
+<li>Notice the <code>connectedCallback</code> method. This method will be automatically called by the browser whenever the element enters the DOM. There is a <code>disconnectedCallback</code> method as well for when the element exits the DOM. This means that they have actual lifecycle methods. Natively, without the need for any <code>MutationObserver</code>.</li>
+<li>In general, whenever the browser detects that a Custom Element is created (either via <code>document.createElement</code> or directly in the HTML), it will automatically create the instance and perform whatever you declared. If you ask me, it&#39;s like CSS but for JavaScript. Imagine having to re-declare styles every time you manipulate the DOM. Not fun, uh?</li>
+</ol>
+<p>We could of course still break things down even more. For instance, by moving the <code>form</code> element to its own custom element. But I believe this would defeat the purpose of this post.</p>
+<h2>Wrapping things up</h2>
+<p>I hope it&#39;s clear by now that it&#39;s not fair to compare Web Components to <em>React</em>. Web Components are a conglomerate of technologies native to the web platform, and as such, they come with their own downsides and quirks that <em>React</em> is trying to solve. As did jQuery in the past.</p>
+<p>What I believe Web Components are excellent at is at mitigating some common pain points we find in our day-to-day developments in vanilla JavaScript. You can totally make a mix and match of all three technologies, just use one or two of them, commit only until the point you feel is right.</p>
+<p>The most beautiful thing about Web Components is that they are not going anywhere as long as the web platform lives. They won&#39;t become yet another outdated dependency in your project that you promised your team lead you&#39;d update one year ago. They can only improve from here. Who knows, maybe in the future we&#39;ll see some reactivity baked in, a more ergonomic approach to componentization and rendering, improvements in accessibility and performance, browser compatibility...</p>
+<p>Who knows. Maybe, and only <strong>maybe</strong> then we could compare Web Components with a framework. Until then, we&#39;d better compare them with a <code>querySelector</code>, with setting the <code>innerHTML</code> property or by overthinking selectors so our styles and logic don&#39;t mess up with the wrong element.</p>
+
+        </article>
+    </main><footer>
+    <div class="container">
+        <hr />
+        <p>
+            <small>Content and code generated by me or copied and credited from another
+                human being. No AI has had anything to do with this. <br /> Fuck AI. Fuck capitalism.</small>
+        </p>
+        <nav>
+            <ul role="list">
+                <li>
+                    <small>© Álvaro Palma, 2025</small>
+                </li>
+            </ul>
+            <ul role="list">
+                <li>
+                    <a href="https://github.com/alpalmtree" target="_blank" aria-label="github profile">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2">
+                            <path stroke-dasharray="32" stroke-dashoffset="32"
+                                d="M12 4c1.67 0 2.61 0.4 3 0.5c0.53 -0.43 1.94 -1.5 3.5 -1.5c0.34 1 0.29 2.22 0 3c0.75 1 1 2 1 3.5c0 2.19 -0.48 3.58 -1.5 4.5c-1.02 0.92 -2.11 1.37 -3.5 1.5c0.65 0.54 0.5 1.87 0.5 2.5c0 0.73 0 3 0 3M12 4c-1.67 0 -2.61 0.4 -3 0.5c-0.53 -0.43 -1.94 -1.5 -3.5 -1.5c-0.34 1 -0.29 2.22 0 3c-0.75 1 -1 2 -1 3.5c0 2.19 0.48 3.58 1.5 4.5c1.02 0.92 2.11 1.37 3.5 1.5c-0.65 0.54 -0.5 1.87 -0.5 2.5c0 0.73 0 3 0 3">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="1.05s" values="32;0" />
+                            </path>
+                            <path stroke-dasharray="10" stroke-dashoffset="10"
+                                d="M9 19c-1.41 0 -2.84 -0.56 -3.69 -1.19c-0.84 -0.63 -1.09 -1.66 -2.31 -2.31">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.3s"
+                                    values="10;0" />
+                            </path>
+                        </g>
+                    </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://bsky.app/profile/alpalmtree.dev" target="_blank" aria-label="bluesky profile">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-dasharray="80" stroke-dashoffset="80" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.47 5.94c1.83 1.37 3.81 4.14 4.53 5.63c0.72 -1.49 2.7 -4.26 4.53 -5.63c1.33 -0.99 3.47 -1.75 3.47 0.68c0 0.49 -0.28 4.08 -0.45 4.66c-0.57 2.03 -2.65 2.55 -4.5 2.23c3.24 0.55 4.06 2.36 2.28 4.17c-3.38 3.44 -4.85 -0.87 -5.23 -1.97c-0.07 -0.2 -0.1 -0.3 -0.1 -0.22c-0 -0.08 -0.03 0.02 -0.1 0.22c-0.38 1.1 -1.86 5.41 -5.23 1.97c-1.78 -1.81 -0.96 -3.63 2.28 -4.17c-1.85 0.31 -3.93 -0.21 -4.5 -2.23c-0.17 -0.58 -0.45 -4.18 -0.45 -4.66c0 -2.43 2.14 -1.67 3.47 -0.68Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.9s" values="80;0"/></path></svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,7 +1,29 @@
 .hero {
-    padding-block: 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  padding-block: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.post-list {
+  a {
+    text-decoration: none;
+  }
+  h3 {
+    font-size: var(--size-step-1);
+  }
 }

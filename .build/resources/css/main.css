@@ -3,9 +3,15 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-size: var(--size-step-0);
   line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  
+  & > * {
+    width: 100%;
+  }
 
   & > *:not(header) {
     padding: 2em;
@@ -15,8 +21,9 @@ body {
 
 h1,
 h2,
-h3 {
-  font-family: system-ui, sans-serif;
+h3,
+h4 {
+  font-family: var(--font-sans-serif);
   font-weight: 800;
   line-height: 1.1;
   text-wrap: balance;
@@ -32,6 +39,10 @@ h2 {
 
 h3 {
   font-size: var(--size-step-2);
+}
+
+h4 {
+  font-size: var(--size-step-1);
 }
 
 ul,
@@ -66,6 +77,7 @@ article,
 .container {
   max-width: 750px;
   margin-inline: auto;
+  overflow: hidden;
 }
 
 .container.lg {
@@ -89,8 +101,17 @@ a:not(.logo) {
   --flow-space: 2em;
 }
 
+.logo {
+  font-size: var(--size-step-3);
+}
+
+header {
+  overflow: hidden;
+}
+
 header nav {
   font-size: var(--size-step-1);
+  font-family: var(--font-sans-serif);
   padding: 1rem;
   & {
     display: flex;
@@ -103,6 +124,29 @@ header nav {
   }
 }
 
+footer {
+  margin-top: auto;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
 @view-transition {
     navigation: auto;
 }
+
+/* Customize the default animation behavior */
+
+::view-transition-group(root) {
+    animation-duration: 0.3s;
+}
+

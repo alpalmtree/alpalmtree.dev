@@ -1,0 +1,52 @@
+code-hl code[class*="shj-lang-"] {
+  padding: 1.5rem;
+  overflow: auto;
+  border-radius: 0;
+  width: 100%;
+  font-size: 1rem;
+}
+
+code-hl {
+  position: relative;
+
+  &:has(details) {
+    copy-code {
+      display: none;
+    }
+  }
+
+  &:has(details[open]) {
+    copy-code {
+      display: block;
+    }
+
+    summary {
+        border-bottom: none;
+    }
+  }
+}
+
+p + code-hl:has(details) {
+    margin-top: 1rem;
+    display: block;
+}
+
+code-hl:has(details) {
+ 
+  pre {
+    margin: 0;
+    border: 1px solid var(--color-text);
+  }
+
+  summary {
+    padding: 0.6rem;
+    font-family: "Courier New", Courier, monospace;
+    border: 1px solid var(--color-text);
+    cursor: pointer;
+
+    &::marker,
+    &::-webkit-details-marker {
+      content: "";
+    }
+  }
+}
