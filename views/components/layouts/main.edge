@@ -11,7 +11,6 @@
     {{{ $.css('variables') }}}
     {{{ $.css("main") }}}
     {{{ $.component("x-toggle") }}}
-    {{{ $.js('view-partials') }}}
     {{{ await $slots.styles?.() ?? "" }}}
     {{{ await $slots.scripts?.() ?? "" }}}
     {{{ await $slots.components?.() ?? "" }}}
@@ -20,11 +19,9 @@
 
 <body>
     @!ui.header()
-    <view-partial>
-        <main class="container">
-            {{{ await $slots.main() }}}
-        </main>
-    </view-partial>
+    <main class="container">
+        {{{ await $slots.main() }}}
+    </main>
     @!ui.footer()
 </body>
 

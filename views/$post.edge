@@ -14,24 +14,19 @@
     {{{ $.component("x-toggle") }}}
     {{{ $.component("code-hl") }}}
     {{{ $.component("copy-code") }}}
-    {{{ $.js('view-partials') }}}
     <link rel="stylesheet" href="{{ $.asset("/vendor/speed-highlight/themes/github-dark.css") }}">
 </head>
 
 <body>
     @!ui.header()
-
-    <view-partial>
-        <main>
-            <article class="flow">
-                <h1>{{ post.title }}</h1>
-                <p class="lede">{{ post.description }}</p>
-                @!image({ src: `blog/${post.image.url}`, alt: post.image.alt })
-                {{{ content }}}
-            </article>
-        </main>
-    </view-partial>
-
+    <main>
+        <article class="flow">
+            <h1>{{ post.title }}</h1>
+            <p class="lede">{{ post.description }}</p>
+            @!image({ src: `blog/${post.image.url}`, alt: post.image.alt })
+            {{{ content }}}
+        </article>
+    </main>
     @!ui.footer()
 </body>
 
