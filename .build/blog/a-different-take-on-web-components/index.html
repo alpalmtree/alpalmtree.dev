@@ -9,37 +9,52 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     <meta name="description" content="Web Components are scary for some people, disappointing for some others and even &quot;the React killer&quot; for a handful of us. What if we shift the mental model?">
     
-            <link rel="stylesheet" href="/resources/css/reset.css?rel=1751194888902">
+            <link rel="stylesheet" href="/resources/css/reset.css?rel=1751232723983">
         
     
-            <link rel="stylesheet" href="/resources/css/variables.css?rel=1751194888902">
+            <link rel="stylesheet" href="/resources/css/variables.css?rel=1751232723983">
         
     
-            <link rel="stylesheet" href="/resources/css/main.css?rel=1751194888902">
+            <link rel="stylesheet" href="/resources/css/main.css?rel=1751232723983">
         
     
-            <link rel="stylesheet" href="/resources/components/x-toggle/component.css?rel=1751194888902">
-            <script type="module" src="/resources/components/x-toggle/component.js?rel=1751194888902"></script>
+            <link rel="stylesheet" href="/resources/components/x-toggle/component.css?rel=1751232723983">
+            <script type="module" src="/resources/components/x-toggle/component.js?rel=1751232723983"></script>
         
     
-            <link rel="stylesheet" href="/resources/components/code-hl/component.css?rel=1751194888902">
-            <script type="module" src="/resources/components/code-hl/component.js?rel=1751194888902"></script>
+            <link rel="stylesheet" href="/resources/components/code-hl/component.css?rel=1751232723983">
+            <script type="module" src="/resources/components/code-hl/component.js?rel=1751232723983"></script>
         
     
-            <link rel="stylesheet" href="/resources/components/copy-code/component.css?rel=1751194888902">
-            <script type="module" src="/resources/components/copy-code/component.js?rel=1751194888902"></script>
+            <link rel="stylesheet" href="/resources/components/copy-code/component.css?rel=1751232723983">
+            <script type="module" src="/resources/components/copy-code/component.js?rel=1751232723983"></script>
         
-    <link rel="stylesheet" href="/resources/vendor/speed-highlight/themes/github-dark.css?rel=1751194888903">
+    
+            <script type="module" src="/resources/js/view-partials.js?rel=1751232723983"></script>
+        
+    <link rel="stylesheet" href="/resources/vendor/speed-highlight/themes/github-dark.css?rel=1751232723983">
 </head>
 
 <body><header class="container lg">
     <nav>
         <ul role="list">
-            <li><a href="/" class="logo" aria-label="Link to home">🍂</a></li>
+            <li>
+                <view-link>
+                    <a href="/" class="logo" aria-label="Link to home">🍂</a>
+                </view-link>
+            </li>
         </ul>
         <ul role="list">
-            <li><a href="/explore/">Explore</a></li>
-            <li><a href="/about/">About</a></li>
+            <li>
+                <view-link>
+                    <a href="/explore/">Explore</a>
+                </view-link>
+            </li>
+            <li>
+                <view-link>
+                    <a href="/about/">About</a>
+                </view-link>
+            </li>
             <li><x-toggle>
   <label>
     <!-- From Uiverse.io by JkHuger -->
@@ -69,15 +84,17 @@
         </ul>
     </nav>
 </header>
-    <main>
-        <article class="flow">
-            <h1>A different take on Web Components</h1>
-            <p class="lede">Web Components are scary for some people, disappointing for some others and even &quot;the React killer&quot; for a handful of us. What if we shift the mental model?</p>
+
+    <view-partial>
+        <main>
+            <article class="flow">
+                <h1>A different take on Web Components</h1>
+                <p class="lede">Web Components are scary for some people, disappointing for some others and even &quot;the React killer&quot; for a handful of us. What if we shift the mental model?</p>
 <img 
     srcset="/resources/images/blog/a-different-take-on-web-components/img_lg.webp 950w, /resources/images/blog/a-different-take-on-web-components/img_md.webp 700w, /resources/images/blog/a-different-take-on-web-components/img_sm.webp 411w"
     sizes="(min-width: 1000px) 950px, 100%"
     alt="Black and white, dithered image of a lego brick inserted in the middle of a bigger lego flat base.">
-            <p>Honestly, I believe there&#39;s no middle ground: web components are either over or underrated. While some people state <a href="https://dev.to/ryansolid/web-components-are-not-the-future-48bh">that the cost of Web Components</a> is not worth the use case, some others state that &quot;you don&#39;t need React (or any other frontend framework) anymore&quot;.</p>
+                <p>Honestly, I believe there&#39;s no middle ground: web components are either over or underrated. While some people state <a href="https://dev.to/ryansolid/web-components-are-not-the-future-48bh">that the cost of Web Components</a> is not worth the use case, some others state that &quot;you don&#39;t need React (or any other frontend framework) anymore&quot;.</p>
 <p>Actually, yes, there is a middle ground of course. Don&#39;t blindly believe strangers on the internet. Not so long ago I came across <a href="https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/">this article</a> talking about what Web Components are good at — and it does have a great point. There are few articles in this line, I&#39;d recommend you do a little research on the topic.</p>
 <p>However, most literature I read on the internet makes the mistake, from my point of view, of comparing Web Components with other libraries (hereafter, <em>React</em>, since it&#39;s much more ergonomic to write than <em>&lt;insert_your_framework_here&gt;</em>). I believe this is intrinsically wrong, since Web Components are a technology (or better yet, a <strong>group of technologies</strong>) native to the web platform; and as such, we can have a lot of different use cases — so the list of &quot;what are web components good at&quot; grows with every case that works for you.</p>
 <p>If you are totally new to Web Components, I&#39;d highly recommend following any tutorial you find out there and then revisiting this post. Anything works, really. There is a <strong>heck of a lot</strong> of articles and videos on this subject. Pick your favorite content creator and most certainly they&#39;ll have a video/article about Web Components. Trust me (or don&#39;t, I&#39;m just another stranger on the internet).</p>
@@ -395,8 +412,10 @@ customElements.define(
 <p>The most beautiful thing about Web Components is that they are not going anywhere as long as the web platform lives. They won&#39;t become yet another outdated dependency in your project that you promised your team lead you&#39;d update one year ago. They can only improve from here. Who knows, maybe in the future we&#39;ll see some reactivity baked in, a more ergonomic approach to componentization and rendering, improvements in accessibility and performance, browser compatibility...</p>
 <p>Who knows. Maybe, and only <strong>maybe</strong> then we could compare Web Components with a framework. Until then, we&#39;d better compare them with a <code>querySelector</code>, with setting the <code>innerHTML</code> property or by overthinking selectors so our styles and logic don&#39;t mess up with the wrong element.</p>
 
-        </article>
-    </main><footer>
+            </article>
+        </main>
+    </view-partial>
+<footer>
     <div class="container">
         <hr />
         <p>

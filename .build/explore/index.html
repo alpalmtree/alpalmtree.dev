@@ -8,20 +8,23 @@
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     
-            <link rel="stylesheet" href="/resources/css/reset.css?rel=1751194888856">
+            <link rel="stylesheet" href="/resources/css/reset.css?rel=1751232723935">
         
     
-            <link rel="stylesheet" href="/resources/css/variables.css?rel=1751194888856">
+            <link rel="stylesheet" href="/resources/css/variables.css?rel=1751232723935">
         
     
-            <link rel="stylesheet" href="/resources/css/main.css?rel=1751194888856">
+            <link rel="stylesheet" href="/resources/css/main.css?rel=1751232723935">
         
     
-            <link rel="stylesheet" href="/resources/components/x-toggle/component.css?rel=1751194888856">
-            <script type="module" src="/resources/components/x-toggle/component.js?rel=1751194888856"></script>
+            <link rel="stylesheet" href="/resources/components/x-toggle/component.css?rel=1751232723935">
+            <script type="module" src="/resources/components/x-toggle/component.js?rel=1751232723935"></script>
+        
+    
+            <script type="module" src="/resources/js/view-partials.js?rel=1751232723935"></script>
         
             
-            <link rel="stylesheet" href="/resources/css/pages/home.css?rel=1751194888856">
+            <link rel="stylesheet" href="/resources/css/pages/home.css?rel=1751232723935">
         
     
     
@@ -31,11 +34,23 @@
 <body><header class="container lg">
     <nav>
         <ul role="list">
-            <li><a href="/" class="logo" aria-label="Link to home">🍂</a></li>
+            <li>
+                <view-link>
+                    <a href="/" class="logo" aria-label="Link to home">🍂</a>
+                </view-link>
+            </li>
         </ul>
         <ul role="list">
-            <li><a href="/explore/">Explore</a></li>
-            <li><a href="/about/">About</a></li>
+            <li>
+                <view-link>
+                    <a href="/explore/">Explore</a>
+                </view-link>
+            </li>
+            <li>
+                <view-link>
+                    <a href="/about/">About</a>
+                </view-link>
+            </li>
             <li><x-toggle>
   <label>
     <!-- From Uiverse.io by JkHuger -->
@@ -65,12 +80,14 @@
         </ul>
     </nav>
 </header>
-    <main class="container">
-        
+    <view-partial>
+        <main class="container">
+            
     <section class="hero">
         <h1>Browse by category</h1>
     </section>
-    </main><footer>
+        </main>
+    </view-partial><footer>
     <div class="container">
         <hr />
         <p>
