@@ -21,7 +21,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-sans-serif);
   font-weight: 800;
   line-height: 1.1;
@@ -38,6 +39,10 @@ h2 {
 
 h3 {
   font-size: var(--size-step-2);
+}
+
+h4 {
+  font-size: var(--size-step-1);
 }
 
 ul,
@@ -72,6 +77,7 @@ article,
 .container {
   max-width: 750px;
   margin-inline: auto;
+  overflow: hidden;
 }
 
 .container.lg {
@@ -97,6 +103,10 @@ a:not(.logo) {
 
 .logo {
   font-size: var(--size-step-3);
+}
+
+header {
+  overflow: hidden;
 }
 
 header nav {

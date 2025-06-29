@@ -14,7 +14,7 @@ Broadly speaking, the Shadow DOM API allows you to create a sort of scope inside
 
 This is typically used together with Custom Elements because is a great way of providing our beloved encapsulation we see in React (or \<your_framework_here\>, remember). When attaching a shadow DOM to an HTMLElement:
 
-<x-code-tabs>
+<code-hl group="shadow-dom" name="app.js" open>
 
 ```js
 const appRoot = document.getElementById("app-root");
@@ -28,13 +28,19 @@ appRoot.shadowRoot.appendChild(paragraph);
 
 // appRoot.appendChild(paragraph) --> would work, but it won't be visible in the browser.
 ```
+</code-hl>
+
+<code-hl group="shadow-dom" name="app.html">
+
 ```html
 <p>Outside shadow DOM</p>
 <div id="app-root"></div>
 ```
-</x-code-tabs>
+</code-hl>
 
 We can see the following in our browser's inspector:
+
+<code-hl>
 
 ```html
 <p>Outside shadow DOM</p>
@@ -43,7 +49,11 @@ We can see the following in our browser's inspector:
     <p>Inside shadow DOM</p>
 </div>
 ```
+</code-hl>
+
 As you might have (at least partially) guessed, statements like the following won't affect the paragraph contained inside the `shadowRoot` of the element:
+
+<code-hl>
 
 ```html
 <style>
@@ -59,6 +69,8 @@ As you might have (at least partially) guessed, statements like the following wo
     );
 </script>
 ```
+</code-hl>
+
 
 That's cool, isn't it? You should know, however, that the shadow DOM comes with a few quirks of its own. I highly recommend reading this article about [shadow DOM and a11y](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/) and this other one about [issues with styles encapsulation](https://www.matuzo.at/blog/2023/pros-and-cons-of-shadow-dom).
 
@@ -69,7 +81,7 @@ Looking at the example above (or if you are used to creating elements in vanilla
 
 The most interesting bit, I'd argue, is the fact that even if they exist in the DOM, they won't be visible until you append it somehow (either manually or using the declarative shadow DOM). In case you want the content that you will later append to exist in the DOM (for instance, if you are server-side-rendering/statically-generating it), your users won't see any flashed content neither you have to worry about using any workaround (classic AngularJS' `ng-cloak`, if you know what I mean).
 
-<x-code-tabs>
+<code-hl group="template" name="app.js" open>
 
 ```js
 const appRoot = document.getElementById("app-root");
@@ -91,6 +103,9 @@ const initialMessage = messageTemplate.content.cloneNode(true);
 initialMessage.querySelector("strong").textContent = "stranger";
 appRoot.appendChild(initialMessage);
 ```
+</code-hl>
+
+<code-hl group="template" name="app.html">
 
 ```html
 <div id="app-root">
@@ -103,14 +118,14 @@ appRoot.appendChild(initialMessage);
     <p>Hello, <strong></strong>! Welcome to my app!</p>
 </template>
 ```
-</x-code-tabs>
+</code-hl>
 
 Creating elements with `document.createElement` and manipulating the attributes and properties imperatively is still slightly faster, but this allows for "server side rendering" some content that you will later use via JavaScript, with a much cleaner approach; and much safer and performant than setting the `innerHTML` property (as we can see in several Web Components tutorials out there).
 
 #### The `template` element and the shadow DOM
 If you found the two technologies useful so far, I have great news: they DO pair **very** well, allowing even for more complex composition while not having to write a single line of JavaScript:
 
-<x-code-tabs>
+<code-hl group="template-shadow" name="app.html" open>
 
 ```html
 <div id="app-root">
@@ -131,6 +146,9 @@ If you found the two technologies useful so far, I have great news: they DO pair
     </template>
 </div>
 ```
+</code-hl>
+
+<code-hl group="template-shadow" name="app.js">
 
 ```js
 // we are referencing the shadow root directly,
@@ -143,7 +161,7 @@ const shadowParagraphs = appRoot.querySelectorAll("p");
 // Length: 1
 const lightDOMParagraphs = document.querySelectorAll("p");
 ```
-</x-code-tabs>
+</code-hl>
 
 The [`slot`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot) element is our friend here. Notice that it comes with a few quirks as well, but as a rule of thumb: whatever is slotted, will be in the light DOM, while the template itself will be in the shadow DOM. This allows for pretty interesting patterns, where you can compose some base layout with encapsulated logic and styles and snap in there your elements from the light DOM.
 
@@ -159,7 +177,7 @@ The "confusion" (or merely coining by the community) of the concept *Web Compone
 
 Simply put: you don't (necessarily) have to use `template`s, the shadow DOM or do any sort of client side rendering. You just use custom elements to wrap a piece of HTML and hydrate it. What a good-old `querySelector` would do, but on steroids. Let's put an example by making one of the previous examples a tiny little bit more complicated:
 
-<x-code-tabs>
+<code-hl group="custom-elements" name="app.html" open>
 
 ```html
 <body>
@@ -188,6 +206,9 @@ Simply put: you don't (necessarily) have to use `template`s, the shadow DOM or d
   </template>
 </body>
 ```
+</code-hl>
+
+<code-hl group="custom-elements" name="app.js">
 
 ```js
 const toggleSchema = document.getElementById("toggle-schema");
@@ -222,7 +243,7 @@ form.addEventListener("submit", (e) => {
 doToggle(toggleSchema);
 createMessage("stranger");
 ```
-</x-code-tabs>
+</code-hl>
 
 There are few things I'd like to highlight. Keep in mind that this example is extremely simple, let us imagine we have a much larger application:
 
@@ -233,7 +254,7 @@ There are few things I'd like to highlight. Keep in mind that this example is ex
 
 Let's now see the same example using Custom Elements:
 
-<x-code-tabs>
+<code-hl group="custom-elements-2" name="app.html" open>
 
 ```html
 <body>
@@ -265,6 +286,9 @@ Let's now see the same example using Custom Elements:
   </app-root>
 </body>
 ```
+</code-hl>
+
+<code-hl group="custom-elements-2" name="app.js">
 
 ```js
 customElements.define(
@@ -308,7 +332,7 @@ customElements.define(
   }
 );
 ```
-</x-code-tabs>
+</code-hl>
 
 With this approach:
 

@@ -1,5 +1,5 @@
 import { render } from "./lib/helpers.js";
-import { marked } from "npm:marked";
+import { marked } from "marked";
 import { slugs, allPostsMetadata } from "./services/posts.service.js";
 
 /** @type {import('#types').Router} */
@@ -8,8 +8,9 @@ export default [
         path: "/",
         name: "home",
         handler: async () => {
-            console.log(allPostsMetadata)
-            return await render("index")
+            return await render("index", {
+                posts: allPostsMetadata
+            })
         }
     },
     {
