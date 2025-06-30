@@ -2,7 +2,8 @@
   "nodeModulesDir": "auto",
   "tasks": {
     "dev": "deno run  -A --watch lib/mod.js",
-    "build": "deno run -A lib/mod.js build",
+    "build": "deno run -A lib/mod.js build && deno run build:rs",
+    "build:rs": "esbuild --bundle --minify --sourcemap=inline ./resources/js/pages/*.js --outdir=./.build/resources/js/pages && esbuild --bundle --minify --sourcemap=inline ./resources/css/pages/*.css --outdir=./.build/resources/css/pages",
     "img": "deno run -A lib/scripts/imageProcessing.js"
   },
   "compilerOptions": {
@@ -15,6 +16,7 @@
    "@std/http": "jsr:@std/http@^1.0.18",
    "edge.js": "npm:edge.js",
    "#types": "./lib/types.d.ts",
+   "esbuild": "npm:esbuild@^0.25.5",
    "marked": "npm:marked@^16.0.0",
    "sharp": "npm:sharp@^0.34.2"
   }
