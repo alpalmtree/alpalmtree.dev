@@ -65,4 +65,16 @@ copy-code {
 
 summary > copy-code {
   position: static;
+
+  .copy {
+    /* button */
+    --button-bg: transparent;
+    --button-hover-bg: transparent;
+    --button-text-color: var(--color-text);
+    --button-hover-text-color: var(--color-primary);
+    --button-border-radius: 0px;
+    --button-diameter: 36px;
+    --button-outline-width: 0px;
+    --button-outline-color: transparent;
+  }
 }
