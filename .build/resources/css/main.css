@@ -1,5 +1,11 @@
-/* Credits: https://piccalil.li/blog/some-simple-ways-to-make-content-look-good/ */
+@import url("./reset.css");
+@import url("./variables.css");
 
+/* Common components */
+@import url("../components/x-toggle/component.css");
+
+/*********************************************************************************/
+/* Credits: https://piccalil.li/blog/some-simple-ways-to-make-content-look-good/ */
 body {
   background: var(--color-bg);
   color: var(--color-text);

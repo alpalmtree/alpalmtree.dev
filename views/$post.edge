@@ -8,13 +8,11 @@
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     <meta name="description" content="{{ post.description }}">
-    {{{ $.css("reset") }}}
-    {{{ $.css('variables') }}}
     {{{ $.css("main") }}}
-    {{{ $.component("x-toggle") }}}
-    {{{ $.component("code-hl") }}}
-    {{{ $.component("copy-code") }}}
-    <link rel="stylesheet" href="{{ $.asset("/vendor/speed-highlight/themes/github-dark.css") }}">
+    {{{ $.css("pages/post") }}}
+
+    {{{ $.js("common") }}}
+    {{{ $.js("pages/post") }}}
 </head>
 
 <body>
