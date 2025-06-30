@@ -45,8 +45,9 @@ a:is(.logo) {
 
 img,
 picture {
-  max-width: 100%;
+  width: 100%;
   display: block;
+  height: auto;
 }
 
 input,
