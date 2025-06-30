@@ -55,7 +55,7 @@ class CopyCode extends HTMLElement {
     !customElements.get("copy-code") &&
     customElements.define("copy-code", CopyCode);
 
-  content = this.closest("code-hl").content;
+  content = this.closest("code-hl").querySelector('code').textContent;
 
   constructor() {
     super();
