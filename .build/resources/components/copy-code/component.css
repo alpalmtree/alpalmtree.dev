@@ -1,10 +1,10 @@
-/* From Uiverse.io by Galahhad */
-/* tooltip settings 👇 */
 copy-code {
   position: absolute;
   right: 8px;
   top: 8px;
 
+  /* From Uiverse.io by Galahhad */
+  /* tooltip settings 👇 */
   .copy {
     /* button */
     --button-bg: #353434;
@@ -61,4 +61,8 @@ copy-code {
   .copy:hover svg {
     color: var(--button-hover-text-color);
   }
+}
+
+summary > copy-code {
+  position: static;
 }

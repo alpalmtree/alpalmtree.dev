@@ -4,6 +4,8 @@ code-hl code[class*="shj-lang-"] {
   border-radius: 0;
   width: 100%;
   font-size: 1rem;
+  display: block;
+  scrollbar-width: thin;
 }
 
 code-hl {
@@ -17,11 +19,14 @@ code-hl {
 
   &:has(details[open]) {
     copy-code {
-      display: block;
+      display: flex;
     }
 
     summary {
         border-bottom: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
   }
 }

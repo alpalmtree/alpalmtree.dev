@@ -29,26 +29,33 @@ class CodeHL extends HTMLElement {
     ).replace("language-", "");
 
     this.#codeElement.classList.add(`shj-lang-${lang}`);
-    this.prepend(this.#copyCodeBtn);
 
-    if (!this.#name || !this.#group) return;
+    if (!this.#name || !this.#group) {
+      this.prepend(this.#copyCodeBtn);
+      return;
+    }
 
     this.#detailsElement = document.createElement("details");
     this.#detailsElement.name = this.#group;
-    this.#detailsElement.open = this.hasAttribute('open');
+    this.#detailsElement.open = this.hasAttribute("open");
 
     this.#summaryElement = document.createElement("summary");
 
-    this.#summaryElement.textContent = this.#name;    
+    this.#summaryElement.textContent = this.#name;
+    this.#summaryElement.append(this.#copyCodeBtn)
   }
 
   async connectedCallback() {
-    if (!document.querySelector('head').querySelector("[data-css=shj-github-dark]")) {
-      const style = document.createElement('link')
+    if (
+      !document.querySelector("head").querySelector(
+        "[data-css=shj-github-dark]",
+      )
+    ) {
+      const style = document.createElement("link");
       style.dataset.css = "shj-github-dark";
       style.rel = "stylesheet";
       style.href = "/resources/vendor/speed-highlight/themes/github-dark.css";
-      document.querySelector('head').append(style)
+      document.querySelector("head").append(style);
     }
 
     const { highlightElement } = await import(
@@ -60,9 +67,11 @@ class CodeHL extends HTMLElement {
 
     if (!this.#name || !this.#group) return;
 
-    this.#detailsElement.append(this.#summaryElement, this.#codeElement.parentElement);
-    this.append(this.#detailsElement)
-    
+    this.#detailsElement.append(
+      this.#summaryElement,
+      this.#codeElement.parentElement,
+    );
+    this.append(this.#detailsElement);
   }
 }
 
