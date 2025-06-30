@@ -6,6 +6,7 @@ code-hl code[class*="shj-lang-"] {
   font-size: 1rem;
   display: block;
   scrollbar-width: thin;
+  max-height: 85vh;
 }
 
 code-hl {
