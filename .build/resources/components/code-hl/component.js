@@ -43,6 +43,14 @@ class CodeHL extends HTMLElement {
   }
 
   async connectedCallback() {
+    if (!document.querySelector('head').querySelector("[data-css=shj-github-dark]")) {
+      const style = document.createElement('link')
+      style.dataset.css = "shj-github-dark";
+      style.rel = "stylesheet";
+      style.href = "/resources/vendor/speed-highlight/themes/github-dark.css";
+      document.querySelector('head').append(style)
+    }
+
     const { highlightElement } = await import(
       "../../vendor/speed-highlight/index.js"
     );
