@@ -17,7 +17,7 @@ export type Metadata = {
     description: string,
     slug: string,
     pubDate: Date,
-    updateDate?: Date,
+    updatedDate?: Date,
     author: string,
     tags: string[],
     image: {

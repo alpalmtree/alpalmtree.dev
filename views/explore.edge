@@ -1,9 +1,18 @@
-@layouts.main()
-    @slot('styles')
-        {{{ $.css('pages/home') }}}
-    @end
+@layouts.main({ title: "Explora" })
+@slot('styles')
+{{{ $.css('pages/home') }}}
+@end
 
-    <section class="hero">
-        <h1>Browse by category</h1>
-    </section>
+<section class="hero">
+    <h1>Busca por categoría</h1>
+</section>
+<ul role="list" class="grid">
+    @each(tag in tags)
+    <li class="card">
+        <a href="/explore/{{ tag }}/">
+            {{ titleCase(tag).replaceAll("-", " ") }}
+        </a>
+    </li>
+    @end
+</ul>
 @end

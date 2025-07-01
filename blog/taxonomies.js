@@ -1,3 +1,3 @@
 export default {
-    tags: ["web-components", "javascript", "about"]
+    tags: ["web-components", "javascript", "el-menda"]
 }

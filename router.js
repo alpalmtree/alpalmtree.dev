@@ -17,7 +17,10 @@ export default [
         path: "/explore/",
         name: "explore",
         handler: async () => {
-            return await render("explore")
+            const { default: taxonomies } = await import("./blog/taxonomies.js")
+            return await render("explore", {
+                tags: taxonomies.tags
+            })
         }
     },
     {
@@ -28,7 +31,10 @@ export default [
             return taxonomies.tags.map(tag => ({ tag })) 
         },
         handler: async (ctx) => {
-           return await render("$tag", ctx.params)
+           return await render("$tag", {
+                tag: ctx.params.tag,
+                posts: allPostsMetadata.filter(post => post.tags.includes(ctx.params.tag))
+           })
         }
     },
     {
