@@ -7,7 +7,6 @@ class CodeHL extends HTMLElement {
 
   #codeElement = this.querySelector("code");
   #copyCodeBtn = document.createElement("copy-code");
-  content = this.#codeElement.textContent;
 
   /** For details grouping */
   #group = this.getAttribute("group");
