@@ -6,7 +6,7 @@ const nodeIsEqual = (node1, node2) => {
   return node1.isEqualNode(node2);
 };
 
-globalThis.addEventListener("page:changed", async ({ detail }) => {
+const replaceDOM = async (detail) => {
   const res = await fetch(detail);
   const text = await res.text();
   const doc = (new DOMParser()).parseFromString(text, "text/html");
@@ -20,7 +20,6 @@ globalThis.addEventListener("page:changed", async ({ detail }) => {
     if (![...newHead.children].some((node) => nodeIsEqual(child, node))) {
       scheduleRemove.push(child);
     }
-
   }
 
   for (const child of newHead.children) {
@@ -28,10 +27,13 @@ globalThis.addEventListener("page:changed", async ({ detail }) => {
       currentHead.append(child);
     }
   }
+  scheduleRemove.forEach((el) => el.remove());
+  document.querySelector("view-partial").replaceWith(viewPartial);
+};
 
-  document.startViewTransition(() => {
-    scheduleRemove.forEach((el) => el.remove());
-    document.querySelector("view-partial").replaceWith(viewPartial);
+globalThis.addEventListener("page:changed", ({ detail }) => {
+  document.startViewTransition(async () => {
+    await replaceDOM(detail);
   });
 });
 
