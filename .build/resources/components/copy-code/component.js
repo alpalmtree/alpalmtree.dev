@@ -55,15 +55,17 @@ class CopyCode extends HTMLElement {
     !customElements.get("copy-code") &&
     customElements.define("copy-code", CopyCode);
 
-  content = this.closest("code-hl").querySelector('code').textContent;
-
   constructor() {
     super();
-    this.innerHTML = template;
     this.addEventListener("click", this);
   }
+
+  connectedCallback() {
+    this.innerHTML = template;
+  }
   handleEvent = () => {
-    navigator.clipboard.writeText(this.content);
+    const content = this.closest("code-hl").querySelector('code').textContent;
+    navigator.clipboard.writeText(content);
 
     setTimeout(() => {
       this.querySelector("button").blur();
