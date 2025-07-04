@@ -29,6 +29,7 @@ const replaceDOM = async (detail) => {
   }
   scheduleRemove.forEach((el) => el.remove());
   document.querySelector("view-partial").replaceWith(viewPartial);
+  document.querySelector('header').scrollIntoView()
 };
 
 globalThis.addEventListener("page:changed", ({ detail }) => {
