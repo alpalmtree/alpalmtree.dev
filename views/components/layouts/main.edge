@@ -16,11 +16,11 @@
 
 <body>
     @!ui.header()
-    <main class="container">
-        <view-partial>
+    <view-partial>
+        <main class="container">
             {{{ await $slots.main() }}}
-        </view-partial>
-    </main>
+        </main>
+    </view-partial>
     @!ui.footer()
 </body>
 
