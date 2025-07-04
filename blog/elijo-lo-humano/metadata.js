@@ -2,6 +2,7 @@
 export default {
     title: "Elijo lo humano",
     pubDate: new Date("2025-06-11"),
+    updatedDate: new Date("2025-07-3"),
     author: "Álvaro Palma",
     image: {
         url: "elijo-lo-humano",

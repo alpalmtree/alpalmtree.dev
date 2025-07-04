@@ -12,23 +12,23 @@ Se desprende de ello que mi postura se basa en una experiencia personal y colect
 
 Empecé la carrera de traducción en el 2013. Tenía yo aún 17 años y estaba que me quería comer el mundo. Soñaba con viajar, con aprender idiomas, con traducir poesía, teatro, novela.
 
-No tardé mucho en escuchar el primer comentario, de una profesora además (que ya me dirás, manda cojones): "El sector de la traducción está jodido. Hace falta aprender idiomas nicho y meterse de lleno en la postedición".
+No tardé mucho en escuchar el primer comentario, de una profesora además (que ya me dirás, manda cojones): "El sector de la traducción está jodido. Hace falta aprender idiomas nicho y meterse de lleno en la posedición".
 
-Sin entrar mucho al trapo, el proceso de postedición se puede resumir en: La máquina hace, la persona corrige. Por aquel entonces, la "máquina" más potente que teníamos era el dichoso Google Translate. No mucho más tarde empezaríamos a oír el binomio "inteligencia artificial", especialmente referido a *DeepL*.
+Sin entrar mucho al trapo, el proceso de posedición se puede resumir en: La máquina hace, la persona corrige. Por aquel entonces, la "máquina" más potente que teníamos era el dichoso Google Translate. No mucho más tarde empezaríamos a oír el binomio "inteligencia artificial", especialmente referido a *DeepL*.
 
 En cierto modo, estudié, trabajé y me (des)ilusioné mientras la *proto*-IA hacía lo suyo. Pero bueno, yo era feliz con mis idiomas no-nicho y traducciones de artículos de periódico y poesía.
 
-Por supuesto, yo también pasé por el aro de la postedición. A nivel académico y profesional.
+Por supuesto, yo también pasé por el aro de la posedición. A nivel académico y profesional.
 
-Es una sensación algo rara de definir. Por un lado, teníamos ya por aquel entonces el hecho de que en efecto éramos más productivos. Pero también se notaba quién había hecho una postedición y quién había traducido con inteligencia puramente humana (para bien y para mal). Además; y creo que esta posiblemente sea la clave para entender la línea argumental de este escrito, me gustaba **mucho** traducir; y la IA se lo estaba cargando.
+Es una sensación algo rara de definir. Por un lado, teníamos ya por aquel entonces el hecho de que en efecto éramos más productivos. Pero también se notaba quién había hecho una posedición y quién había traducido con inteligencia puramente humana (para bien y para mal). Además; y creo que esta posiblemente sea la clave para entender la línea argumental de este escrito, me gustaba **mucho** traducir; y la IA se lo estaba cargando.
 
-De repente, la postedición se estaba convirtiendo cada vez más en el estándar. Supongo que es parte del sueño capitalista a fin de cuentas: produce más, más rápido y más barato. Es bueno, ¿no?
+De repente, la posedición se estaba convirtiendo cada vez más en el estándar. Supongo que es parte del sueño capitalista a fin de cuentas: produce más, más rápido y más barato. Es bueno, ¿no?
 
 Pero, *¿bueno para quién?*
 
 ## La desvirtuación del trabajo humano
 
-Como podrás imaginar, uno de los *gotchas* de la postedición es que, como empresa, te sale más barato; pero a costa de pagar menos.
+Como podrás imaginar, uno de los *gotchas* de la posedición es que, como empresa, te sale más barato; pero a costa de pagar menos.
 
 Por un lado, es cierto que los textos que produce la IA son cada vez mejores; pero, por otro, no termina de dar la talla. La promesa era que podríamos hacer lo mismo, con la misma calidad y en menos tiempo; y que por tanto estaba justificado pagar este tipo de encargos a mucho menos de lo que se paga el trabajo humano o manual.
 
@@ -42,7 +42,7 @@ Creo que sobran las explicaciones. Este tipo de encargos siempre son una ruleta 
 
 Estas agencias son el cáncer del sector. Pero claro, la culpa no es intrínsecamente de la IA, sino del capitalismo y la globalización. Es más, hay quien podría argumentar que no nos queda mucho para ver cómo el porcentaje de casos se invierte; y que cada vez será más raro que el ser humano tenga que modificar el texto final.
 
-Si me preguntas a mí, te diré que si llegamos a ese punto, antes nos quedaremos sin posteditores que ver cómo realmente se cumple la promesa de "trabaja menos, gana más". Para las empresas sí será así, pero no para las traductoras.
+Si me preguntas a mí, te diré que si llegamos a ese punto, antes nos quedaremos sin poseditoras que ver cómo realmente se cumple la promesa de "trabaja menos, gana más". Para las empresas sí será así, pero no para las traductoras.
 
 ### 2. Es una mierda, pero se entiende. Es suficiente.
 
@@ -54,11 +54,11 @@ Que los textos, mientras se entiendan, son suficientes.
 
 Seguro que te ha pasado más de una vez. Estás leyendo algo en español y no termina de sonar bien. Construcciones gramaticales que en otros idiomas sí tienen sentido pero que en español no. Mensajes que, aunque cumplen una función, te sacan por completo de tu contexto lingüístico-cultural.
 
-Pero, de algún modo, nos hemos acostumbrado. Y las empresas lo saben y, a algunas, les da igual. Aquí vemos el caso con el que cerraba el punto anterior: muchas veces pasan de contratar siquiera a una persona que haga la postedición. Como el texto que genera es suficientemente bueno "para lo que estamos acostumbrados", vamos p'alante.
+Pero, de algún modo, nos hemos acostumbrado. Y las empresas lo saben y, a algunas, les da igual. Aquí vemos el caso con el que cerraba el punto anterior: muchas veces pasan de contratar siquiera a una persona que haga la posedición. Como el texto que genera es suficientemente bueno "para lo que estamos acostumbrados", vamos p'alante.
 
 Lo peor es que esto mismo lo he visto en grupos de investigación de la universidad. La traducción (humana) no es una prioridad. Muchas veces deciden hacer las cosas directamente en inglés o, de traducirlas, se las piden a una IA y no pasa por manos humanas en ningún momento.
 
-O por ejemplo, me viene también a la cabeza [web.dev](https://web.dev/), que por defecto decide traducirte con Gemini el contenido. Indudablemente esto hace que el contenido llegue más rápido y a más público, pero a qué precio. A veces he hecho el esfuerzo de leer la traducción y no he tardado más de un párrafo. Personalmente, creo que nos merecemos contenido (y traducciones) *de calidad*; y que no nos deberíamos conformar con cualquier cosa.
+O por ejemplo, me viene también a la cabeza [web.dev](https://web.dev/), que por defecto decide traducirte con Gemini el contenido. Obviamente, sin posedición de por medio. Indudablemente esto hace que el contenido llegue más rápido y a más público, pero a qué precio. A veces he hecho el esfuerzo de leer la traducción y no he tardado más de un párrafo en cambiar a la versión en inglés. Personalmente, creo que nos merecemos contenido (y traducciones) *de calidad*; y que no nos deberíamos conformar con cualquier cosa.
 
 Porque claro, conformarse con cualquier cosa también entraña sus riesgos. Si nos conformamos con que los aparatos electrónicos se rompan en nada y no se puedan reparar, esto mismo seguirán haciendo las empresas, a costa de nuestros bolsillos y de la salud del planeta. Si nos conformamos con que el software requiera cada vez más recursos, este tipo de software seguirán construyendo, a costa de que cada vez necesitemos equipos más potentes. Si nos conformamos con que el contenido tenga cada vez menos calidad, este mismo contenido se seguirá produciento, porque es más barato y requiere menos esfuerzo.
 
@@ -88,7 +88,7 @@ Me gustaba el reto de enfrentarme a una traducción. Me gustaban los malabares m
 
 Sentía que crecía profesionalmente, cómo se me expandía la mente, cómo aprendía. Ya que tenía que estar ocho horas al día con ello, al menos que me aportase algo.
 
-Pero qué curioso. Con la postedición no era así. Producía más y muchas veces sudaba de la calidad porque no me pagaban lo suficiente. Pero el número de horas no bajaba. Todo lo contrario, se presuponía de mí que iba a producir más porque seguía trabajando el mismo tiempo.
+Pero qué curioso. Con la posedición no era así. Producía más y muchas veces sudaba de la calidad porque no me pagaban lo suficiente. Pero el número de horas no bajaba. Todo lo contrario, se presuponía de mí que iba a producir más porque seguía trabajando el mismo tiempo.
 
 Un trabajo cada vez peor pagado y cada vez más alienante.
 
