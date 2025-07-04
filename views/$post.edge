@@ -12,27 +12,28 @@
     {{{ $.css("pages/post") }}}
 
     {{{ $.js("pages/common") }}}
-    {{{ $.js("pages/post") }}}
 </head>
 
 <body>
     @!ui.header()
     <main>
-        <article class="flow">
-            <h1>{{ post.title }}</h1>
-            <p class="lede">{{ post.description }}</p>
-            <p class="pub-date">
-                <strong>{{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short" }).format(post.pubDate)
-                    }} | {{ post.author }}</strong>
-                @if(post.updatedDate)
-                <strong>| Actualizado el {{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short"
-                    }).format(post.updatedDate)
-                    }}</strong>
-                @end
-            </p>
-            @!image({ src: `blog/${post.image.url}`, alt: post.image.alt })
-            {{{ content }}}
-        </article>
+        <view-partial script="{{ $.asset("js/pages/post.js") }}">
+            <article class="flow">
+                <h1>{{ post.title }}</h1>
+                <p class="lede">{{ post.description }}</p>
+                <p class="pub-date">
+                    <strong>{{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short" }).format(post.pubDate)
+                        }} | {{ post.author }}</strong>
+                    @if(post.updatedDate)
+                    <strong>| Actualizado el {{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short"
+                        }).format(post.updatedDate)
+                        }}</strong>
+                    @end
+                </p>
+                @!image({ src: `blog/${post.image.url}`, alt: post.image.alt })
+                {{{ content }}}
+            </article>
+        </view-partial>
     </main>
     @!ui.footer()
 </body>

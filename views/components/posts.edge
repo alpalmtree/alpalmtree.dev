@@ -1,13 +1,15 @@
 <ul role="list" class="grid post-list">
-    @each(post in posts)
-        <li>
-          <a href={{ `/blog/${post.slug}/`}}>
-            <article class="flow">
-              <img src="{{ `/resources/images/blog/${post.image.url}/img_sm.webp` }}" alt="{{ post.image.alt }}">
-              <h3>{{ post.title }}</h3>
-              <p>{{ post.description }}</p>
-            </article>
-          </a>
-        </li>
-    @end
+  @each(post in posts)
+  <li>
+    <view-link>
+      <a href={{ `/blog/${post.slug}/`}}>
+        <article class="flow">
+          <img src="{{ `/resources/images/blog/${post.image.url}/img_sm.webp` }}" alt="{{ post.image.alt }}">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+        </article>
+      </a>
+    </view-link>
+  </li>
+  @end
 </ul>

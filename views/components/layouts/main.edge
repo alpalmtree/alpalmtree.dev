@@ -17,7 +17,9 @@
 <body>
     @!ui.header()
     <main class="container">
-        {{{ await $slots.main() }}}
+        <view-partial>
+            {{{ await $slots.main() }}}
+        </view-partial>
     </main>
     @!ui.footer()
 </body>
