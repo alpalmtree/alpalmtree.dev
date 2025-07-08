@@ -1,4 +1,4 @@
-@let(displayTitle = titleCase(tag).replaceAll("-", " "))
+@let(displayTitle =  titleCase(decodeURIComponent(tag)).replaceAll("-", " "))
 
 @layouts.main({ title: displayTitle })
 @slot('styles')
@@ -9,7 +9,7 @@
     <h1>{{ displayTitle }}</h1>
 </section>
 <section>
-    <view-link><a href="/explore/">&larr; Atrás</a></view-link>
+    <view-link><a href="/explora/">&larr; Atrás</a></view-link>
     @!posts({ posts })
 </section>
 @end

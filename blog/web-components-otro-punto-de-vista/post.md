@@ -1,18 +1,23 @@
-Honestly, I believe there's no middle ground: web components are either over or underrated. While some people state [that the cost of Web Components](https://dev.to/ryansolid/web-components-are-not-the-future-48bh) is not worth the use case, some others state that "you don't need React (or any other frontend framework) anymore".
+Sinceramente, creo que lejos queda la virtud del término medio. Mientras que algunas personas piensan [que el coste de los Web Components](https://dev.to/ryansolid/web-components-are-not-the-future-48bh) no justifica su caso de uso, otras opinan que "se acabó usar React".
 
-Actually, yes, there is a middle ground of course. Don't blindly believe strangers on the internet. Not so long ago I came across [this article](https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/) talking about what Web Components are good at — and it does have a great point. There are few articles in this line, I'd recommend you do a little research on the topic.
+Bueno, de hecho sí que existe un término medio (no te fíes de todo lo que diga un extraño en internet). Hace algún tiempo me topé con [este artículo](https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/) al respecto; y creo que la argumentación está bastante bien expuesta. Existen otros al respecto donde se alaba el uso de los Web Components "para lo que de verdad son útiles".
 
-However, most literature I read on the internet makes the mistake, from my point of view, of comparing Web Components with other libraries (hereafter, *React*, since it's much more ergonomic to write than *\<insert_your_framework_here\>*). I believe this is intrinsically wrong, since Web Components are a technology (or better yet, a **group of technologies**) native to the web platform; and as such, we can have a lot of different use cases — so the list of "what are web components good at" grows with every case that works for you.
+Y sin embargo, ya sea a favor o en contra, casi toda la literatura que podemos encontrar en este respecto comente siempre el mismo error: comparar los Web Components con una librería / framework (de aquí en adelante, diremos simplemente *React*). Opino que es un error porque olvidan la idiosincrasia de los Web Components. A fin de cuentas, son una tecnología (de hecho, **un conjunto de tecnologías**) nativas de la plataforma web. Como tal, existen tantos casos de uso como programadoras hay en el mundo. La lista de casos que podemos enumerar como respuesta a la pregunta de "*¿Para qué me sirven los Web Components?*" crece con cada caso en el que tú le encuentres alguna utilidad.
 
-If you are totally new to Web Components, I'd highly recommend following any tutorial you find out there and then revisiting this post. Anything works, really. There is a **heck of a lot** of articles and videos on this subject. Pick your favorite content creator and most certainly they'll have a video/article about Web Components. Trust me (or don't, I'm just another stranger on the internet).
+Si esta es la primera vez que oyes hablar de los Web Components, te recomiendo que primero busques algún tutorial y entonces vuelvas por aquí. Cualquiera nos vale. Hay **una barbaridad** de artículos y vídeos sobre los Web Components. Te apuesto lo que quieras (menos dinero) a que tu *influencer* de referencia tiene algo al respecto.
 
-## The three pillars: Shadow DOM, `template` element and Custom Elements
-Web components are the name given to this set of native technologies available in modern browsers. Probably, Custom Elements would be at the basic level of the Web Components [prototype](https://en.wikipedia.org/wiki/Prototype_theory). As such, most literature out there focuses and exemplifies use cases with Custom Elements.
+## Los tres pilares: El Shadow DOM, el elemento `template` y los Custom Elements
+
+El término "Web Components" es realmente el nombre que se le da a estas tres tecnologías que podemos encontrar en cualquier navegador moderno. Normalmente, la tecnología más llamativa es la de los Custom Elements; y, por ende, es lo que más se usa para hablar y para poner ejemplos de uso de los Web Components.
+
+Vamos a repasarlas una por una, con casos de uso aislados los unos de los otros y en el contexto de Vanilla JavaScript.
 
 ### Shadow DOM
-Broadly speaking, the Shadow DOM API allows you to create a sort of scope inside an HTMLElement (yes, HTMLElement, not necessarily a custom element). You can read more about it [in MDN's documentation](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM).
+En términos generales, el Shadow DOM nos permite crear un "DOM" encapsulado dentro de cualquier elemento HTML que pueda contener nodos anidados. Échale un ojo al artículo en [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM).
 
-This is typically used together with Custom Elements because is a great way of providing our beloved encapsulation we see in React (or \<your_framework_here\>, remember). When attaching a shadow DOM to an HTMLElement:
+Normalmente, se suele usar mucho con los Custom Elements porque, mientras que los primeros ayudan a servir de *namespace* para métodos y propiedades, el Shadow DOM nos proporciona una encapsulación similar a la que podríamos ver en algunos frameworks.
+
+Veamos (muy por encima) un ejemplo:
 
 <code-hl group="shadow-dom" name="app.js" open>
 
@@ -23,10 +28,7 @@ appRoot.attachShadow({ mode: "open" });
 const paragraph = document.createElement("p");
 paragraph.textContent = "Inside shadow DOM";
 
-// Notice how we are appending it to the shadowRoot property, created with the attachShadow method
 appRoot.shadowRoot.appendChild(paragraph);
-
-// appRoot.appendChild(paragraph) --> would work, but it won't be visible in the browser.
 ```
 </code-hl>
 
@@ -38,7 +40,7 @@ appRoot.shadowRoot.appendChild(paragraph);
 ```
 </code-hl>
 
-We can see the following in our browser's inspector:
+Veremos lo siguiente en el inspector del navegador:
 
 <code-hl>
 
@@ -51,7 +53,7 @@ We can see the following in our browser's inspector:
 ```
 </code-hl>
 
-As you might have (at least partially) guessed, statements like the following won't affect the paragraph contained inside the `shadowRoot` of the element:
+Como podrás imaginar, cosas como las siguientes no afectan al párrafo que se encuentra dentro del Shadow DOM:
 
 <code-hl>
 
@@ -71,15 +73,19 @@ As you might have (at least partially) guessed, statements like the following wo
 ```
 </code-hl>
 
+Así que, si en algún momento te encuentras con la necesidad de tener un trozo de HTML al que no le afecten estilos ni scripts generales de la página, el Shadow DOM es tu herramienta.
 
-That's cool, isn't it? You should know, however, that the shadow DOM comes with a few quirks of its own. I highly recommend reading this article about [shadow DOM and a11y](https://nolanlawson.com/2022/11/28/shadow-dom-and-accessibility-the-trouble-with-aria/) and this other one about [issues with styles encapsulation](https://www.matuzo.at/blog/2023/pros-and-cons-of-shadow-dom).
+No obstante, tiene también sus cosillas medio raras, especialmente en lo relacionado con la accesibilidad; y muchas veces la encapsulación de estilos es algo que no es deseable para una aplicación entera.
 
-Overall, I'd argue it's a rather useful technology, but you can totally avoid it, and it'd be ok. No one is going to web-component-shame you for not using it (and if they do, they are not your friends). It's definitely got its **lights and shadows** (*BA DUM TSS*).
+En definitiva, considero que es una herramienta muy útil; pero puedes evitarla totalmente. Nadie va a meterse contigo porque uses Web Components y no uses el Shadow DOM (y si lo hacen, no son tus amigos).
 
-### The `template` element
-Looking at the example above (or if you are used to creating elements in vanilla JS), we can very easily see how creating and attaching elements to the DOM can be pretty boilerplate-ish. This is one of the reasons why we have the `template` element. While you could still create one and setting its `innerHTML` via JavaScript, they allow for pretty interesting patterns. Learn more about it [on MDN's documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template).
+### El elemento `template`
 
-The most interesting bit, I'd argue, is the fact that even if they exist in the DOM, they won't be visible until you append it somehow (either manually or using the declarative shadow DOM). In case you want the content that you will later append to exist in the DOM (for instance, if you are server-side-rendering/statically-generating it), your users won't see any flashed content neither you have to worry about using any workaround (classic AngularJS' `ng-cloak`, if you know what I mean).
+Si sabes de qué va el tema de crear elementos HTML complejos con JavaScript, sabrás que puede llegar a ser algo tedioso. Por esto mismo tenemos el elemento `template`.
+
+La manera más sencilla, sin `template`s, sería probablemente haciendo uso de la propiedad `innerHTML`. Pero sabemos que no solo es ineficiente, sino que también puede llegar a ser problemático para casos de XSS. En general, ninguna parte de tu HTML que pueda estar controlada por algún tipo de input que no controles. Si aún sí quieres hacerlo con `innerHTML`, tienes que asegurarte de que esas partes dinámicas estás correctamente sanitizadas; y aún hay partes que se te podrían escapar. Un rollo, vamos.
+
+Aquí es donde entra el elemento `template`. Los `template`s pueden existir en el DOM que haya renderizado tu servidor, de modo que puedes usarlos para compartir información front-back. Sin embargo, no es hasta que tú explícitamente decides hacer algo con ellos que realmente se hacen visibles, de modo que tienes también la oportunidad de inyectar contenido dinámico de forma segura.
 
 <code-hl group="template" name="app.js" open>
 
@@ -120,10 +126,11 @@ appRoot.appendChild(initialMessage);
 ```
 </code-hl>
 
-Creating elements with `document.createElement` and manipulating the attributes and properties imperatively is still slightly faster, but this allows for "server side rendering" some content that you will later use via JavaScript, with a much cleaner approach; and much safer and performant than setting the `innerHTML` property (as we can see in several Web Components tutorials out there).
+Crear elementos HTML con `document.createElement` y manipular sus atributos y propiedades de forma imperativa es ligeramente más rápido, pero creo que las ventajas de hacerlo a través de `template`s son evidentes. Es mucho más ergonómico que crearlos de forma programática y mucho más eficiente y seguro que usar `innerHTML` (además de, como mencioné anteriormente, poder renderizar en el servidor un trozo de HTML que luego puedes usar en el lado del cliente).
 
-#### The `template` element and the shadow DOM
-If you found the two technologies useful so far, I have great news: they DO pair **very** well, allowing even for more complex composition while not having to write a single line of JavaScript:
+#### El elemento `template` y el Shadow DOM
+
+Si hasta ahora estas dos tecnologías te han parecido útiles, tengo buenas noticias: forman un dúo **muy** bueno. Combiándolas y haciendo uso del elemento `slot`, podemos conseguir elementos mixtos de *light* y *shadow* DOM con composiciones relativamente complejas. Un ejemplo muy tonto pero que creo que ilustra muy bien las posibilidades. Nótese cómo no estamos escribiendo ni una sola línea de JavaScript para que funcione:
 
 <code-hl group="template-shadow" name="app.html" open>
 
@@ -151,9 +158,6 @@ If you found the two technologies useful so far, I have great news: they DO pair
 <code-hl group="template-shadow" name="app.js">
 
 ```js
-// we are referencing the shadow root directly,
-// attached automatically by the browser thanks
-// to the "shadowrootmode" attribute
 const appRoot = document.getElementById("app-root").shadowRoot;
 
 // Length: 2
@@ -163,19 +167,21 @@ const lightDOMParagraphs = document.querySelectorAll("p");
 ```
 </code-hl>
 
-The [`slot`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot) element is our friend here. Notice that it comes with a few quirks as well, but as a rule of thumb: whatever is slotted, will be in the light DOM, while the template itself will be in the shadow DOM. This allows for pretty interesting patterns, where you can compose some base layout with encapsulated logic and styles and snap in there your elements from the light DOM.
+Como ya mencioné anteriormente, el Shadow DOM tiene sus cosillas; y peor incluso si empezamos a mezclarlo también con el *light* DOM. Pero bueno, es cuestión de aprender a usarlos con cabeza. Personalmente, me fascina cómo podemos conseguir elementos híbridos donde tenemos una parte renderizada en el cliente (aunque de facto exista ya en el HTML del documento), con lógica y estilos encapsulados; y otra parte que sigue el flujo normal que esperas de tu DOM, con los estilos y lógica globales.
 
 ### Custom Elements
-Now that I hope I made my point clear, let's dive right into the *good sauce*. As you hopefully have learned already, the three technologies can be perfectly decoupled and used as stand-alone solutions for problems you may encounter in your day-to-day **vanilla JS apps**.
 
-Why the nuance? Well, let's remember that Web Components are (altogether) a mechanism baked right into the web platform, much like a `querySelector` or a `MutationObserver`. As such, they aim at solving problems that might or might not be solved already by another framework or library. Take the encapsulation for instance. If you are using *React*, most certainly there is a solution for that already (single file components, CSS modules, classes or functions for the logic...). Of course, also for the "write declarative HTML and re-use it via JavaScript"-bit. Custom element are no different.
+Llegados a este punto, espero que ya te hayas familiarizado algo más con las otras dos tecnologías; y que hayas apreciado cómo se pueden utilizar de forma totalmente independiente. Junto con los *Custom Elements*, encontramos una tríada de herramientas que nos pueden hacer la vida mucho más fácil en nuestras aplicaciones escritas en **Vanilla JavaScript**.
 
-As stated in the foreword of this post, there is **a heck of a lot** of articles written about Custom Elements (usually, under the namespace of Web Components, even though, as we already know, it's just one of the corners of the triangle). Let me try to shift the mindset a bit. I'm not going to talk about reusable components, but at what they are good at if we isolate them from the Web Components trio.
+El matiz es importante. Recordemos que los Web Components son, en su conjunto, unas herramientas que podemos encontrar integradas en la plataforma web, no muy diferente de un `querySelector` o de un `MutationObserver`. Dada su idiosincrasia, los problemas que ayudan a resolver pueden estar ya cubiertos por algún framework o librería. Por ejemplo, temas como la encapsulación, la creación de plantillas de forma declarativa para usarlas a través de JavaScript o, como veremos, la organización de propiedades y métodos: Si ya estás usando algún framework como Angular, React o Vue, ya cuentas con mecanismos que resuelven todo esto, además de ofrecerte reactividad y otras cosillas tope guapas con mucha magia detrás.
 
-#### Declaratively hydrating parts of your application
-The "confusion" (or merely coining by the community) of the concept *Web Components* as interchangeable with *Custom Elements* have led to a very interesting concept: *HTML Web Components*. I believe [this article](https://adactio.com/journal/20618) is a pretty good summary of this concept.
+Para hablar de los Custom Elements, me gustaría alejarme del discurso tradicional de los cientos de tutoriales que hay por internet; y centrarme en lo que opino que son increíbles aislándolos de las otras dos herramientas:
 
-Simply put: you don't (necessarily) have to use `template`s, the shadow DOM or do any sort of client side rendering. You just use custom elements to wrap a piece of HTML and hydrate it. What a good-old `querySelector` would do, but on steroids. Let's put an example by making one of the previous examples a tiny little bit more complicated:
+#### Hidratar tu HTML de forma declarativa
+
+Creo que la "confusión" (o simplemente, el uso de la comunidad) de los términos "Web Components" y "Custom Elements" nos han dado la clave bajo un concepto muy interesante: *HTML Web Components*.
+
+En resumidas cuentas, este modelo de Web Components hace principalmente uso de los Custom Elements en un contexto en el que su contenido no necesita ser renderizado con JavaScript, sino que ya se encuentra en el DOM. Es una manera de asegurarte una mejora progresiva de tus aplicaciones sin necesidad de usar constantemente `querySelector`s. Para ejemplificarlo, vamos a complicar un poco más uno de los ejemplos anteriores:
 
 <code-hl group="custom-elements" name="app.html" open>
 
@@ -239,20 +245,19 @@ form.addEventListener("submit", (e) => {
   createMessage(name);
 });
 
-// Setting some initial state imperatively when the document loads
 doToggle(toggleSchema);
 createMessage("stranger");
 ```
 </code-hl>
 
-There are few things I'd like to highlight. Keep in mind that this example is extremely simple, let us imagine we have a much larger application:
+Aquí están pasando varias cosillas:
 
-1. Even though we have clearly separated hydration regions, we are still looking in the whole DOM. We could still select the specific regions (`nav`, `div#app-root`) and then select elements inside, but it can get pretty boilerplate-ish.
-2. We are manually/imperatively initializing everything.
-3. Should any element not be present in the DOM by the time of the execution of the script, it would be ignored, and we should account for any DOM mutation if we want our new elements to be hydrated. Imagine that our template element had any logic inside or that you are sending the `appRoot` element "over the wire", with solutions like [Turbo](https://turbo.hotwired.dev/) or [HTMX](https://htmx.org/).
-4. Overall, we are writing a script with global variables and a step-by-step declaration. This is fine and can be mitigated by taking some architectural decisions, but still. If you wanted to start in a single file and then move the logic to separate files, you'd for sure need a refactor.
+1. Aunque tengamos regiones de hidratación claramente diferenciadas, estamos buscando en el DOM completo. En una aplicación más compleja, posiblemente merecería la pena seleccionar primero estas regiones (por ejemplo, `nav`, `div#app-root`...) y luego ya buscar los elementos que queramos hidratar dentro de estas regiones.
+2. Tanto en este ejemplo como si queremos seleccionar primero las regiones individuales, estamos inicializándolo todo manualmente y de forma imperativa...
+3. ... de modo que si algún elemento no estuviera presente en el DOM en el momento de la ejecución del script, nos lo saltamos por completo. Tenemos que tener en cuenta cualquier mutación que se haga del DOM. Quizás para mutaciones controladas por nosotras mismas no es para tanto (aunque sí un poco tedioso), pero imagínate que estamos mandando HTML *over the wire*, con librerías como [Turbo](https://turbo.hotwired.dev/) o [HTMX](https://htmx.org/).
+4. *Grosso modo*, estamos declarando variables y métodos en el *scope* global y estamos ejecutando las órdenes paso a paso de forma imperativa. Esto se puede mitigar mediante la toma de decisiones de arquitectura; pero, ¿y si te digo que los Custom Elements pueden ayudarnos precisamente con esto?
 
-Let's now see the same example using Custom Elements:
+Veamos el ejemplo usando *HTML Web Components* (o, como a mí me gusta llamarlos, simplemente *Custom Elements*):
 
 <code-hl group="custom-elements-2" name="app.html" open>
 
@@ -279,7 +284,6 @@ Let's now see the same example using Custom Elements:
       <input type="text" placeholder="Tell us your name" name="name" />
       <button type="submit">Send</button>
     </form>
-    <!-- We have moved the template inside the custom element for convenience -->
     <template id="message-template">
       <p>Hello, <strong></strong>! Welcome to my app!</p>
     </template>
@@ -334,22 +338,23 @@ customElements.define(
 ```
 </code-hl>
 
-With this approach:
+Veamos qué está pasando aquí y por qué está tan jodidamente guapo en comparación con el ejemplo anterior:
 
-1. The regions are clearly defined by their respective custom elements wrapper.
-2. The code is "better organized" (I reckon it's also a matter of taste). Each function for manipulating the DOM as well as the references belong to an actual HTML Element that we called `toggle-element` and `app-root`. They are contained inside each instance and hence not polluting the global scope.
-3. Since we are selecting them from the Custom Element, we can have much looser selectors. It is much more unlikely that we add an element with the same selector inside a custom element than in the DOM in general.
-4. They are *actual* DOM elements. While this can come with few downsides, it's worth noticing that `document.querySelector("toggle-element").doToggle()` is as valid as accessing any other method native of a DOM element. This allows for pretty interesting state sharing that we should resolve via prop drilling or global state management in *React*.
-5. Notice the `connectedCallback` method. This method will be automatically called by the browser whenever the element enters the DOM. There is a `disconnectedCallback` method as well for when the element exits the DOM. This means that they have actual lifecycle methods. Natively, without the need for any `MutationObserver`.
-6. In general, whenever the browser detects that a Custom Element is created (either via `document.createElement` or directly in the HTML), it will automatically create the instance and perform whatever you declared. If you ask me, it's like CSS but for JavaScript. Imagine having to re-declare styles every time you manipulate the DOM. Not fun, uh?
+1. Las regiones de hidratación están claramente marcadas por sus respectivos Custom Elements, por lo que podemos hacer las búsquedas directamente dentro de estas regiones de forma declarativa, sin necesidad de andar seleccionándolas primero.
+2. Los Custom Elements ya nos dan esa organización de la que hablábamos antes. Cada método y propiedad relacionados con la manipulación del DOM están contenidos dentro de una clase, de modo que no estamos contaminando el *scope* global.
+3. En relación con el primer punto, dado que ya estamos seleccionando los elementos dentro de un *scope* muy específico, podemos usar selectores mucho menos complejos.
+4. Son **Elementos HTML reales**. Hacer un `document.querySelector("toggle-element").doToggle()` es igual de válido y nos dará el mismo resultado que acceder a cualquier método o propiedad nativos de un elemento HTML específico. Esto simplifica el modelo mental de cómo compartir estado en el DOM sin necesidad de recurrir al clásico *prop drilling* o a librerías de gestión de estado.
+5. Fíjate en el método `connectedCallback`. Este método se invoca automáticamente cuando el navegador detecta que el elemento está presente en el DOM. Tenemos también la contraparte `disconnectedCallback`, que hace lo que su propio nombre indica. Esto significa que tenemos *lifecycle methods* sin necesidad de andar usando un `MutationObserver` o de ejecutar las acciones respectivas de forma imperativa.
+6. En líneas generales, cuando el navegador detecta que hemos creado un Custom Element (ya sea a través de `document.createElement` o bien directamente en el HTML de tu servidor), se encarga automáticamente de crear la instancia respectiva y de llamar a los métodos correspondientes. Me gusta compararlo con CSS. Imagínate que tuvieras que declarar los estilos cada vez que manipulas el DOM. Pues lo mismo, pero para JavaScript.
 
-We could of course still break things down even more. For instance, by moving the `form` element to its own custom element. But I believe this would defeat the purpose of this post.
+## Resumiendo, que es gerundio
 
-## Wrapping things up
-I hope it's clear by now that it's not fair to compare Web Components to *React*. Web Components are a conglomerate of technologies native to the web platform, and as such, they come with their own downsides and quirks that *React* is trying to solve. As did jQuery in the past.
+Espero haber dejado clara mi postura: no es justo comparar los Web Components con un framework. Los Web Components son un conjunto de herramientas nativas de la plataforma web y, como tal, tienen sus cosas raras y decepcionantes también que otros frameworks como [Lit](https://lit.dev/) están intentando solventar. Igual que pasó con jQuery y el `querySelector` en el pasado.
 
-What I believe Web Components are excellent at is at mitigating some common pain points we find in our day-to-day developments in vanilla JavaScript. You can totally make a mix and match of all three technologies, just use one or two of them, commit only until the point you feel is right.
+Lo que sí creo que es un puntazo sobre los Web Components es que ayudan a mitigar los quebraderos de cabeza que nos podemos encontrar en nuestras aplicaciones hechas con vanilla JavaScript. A fin de cuentas, son el resultado de décadas de avance en la plataforma web.
 
-The most beautiful thing about Web Components is that they are not going anywhere as long as the web platform lives. They won't become yet another outdated dependency in your project that you promised your team lead you'd update one year ago. They can only improve from here. Who knows, maybe in the future we'll see some reactivity baked in, a more ergonomic approach to componentization and rendering, improvements in accessibility and performance, browser compatibility...
+Puedes usar las tres herramientas, solo un par, o usarlas solo en una pequeña parte de tu aplicación. Lo más bonito que tienen los Web Components es que no van a ser una dependencia más en tu proyecto que prometiste a tu jefe que ibas a actualizar hace ya un año. Son parte de la plataforma web, y por tanto son "gratis". Puedes usarlos solamente hasta el punto en el que te sientas cómoda y no más allá.
 
-Who knows. Maybe, and only **maybe** then we could compare Web Components with a framework. Until then, we'd better compare them with a `querySelector`, with setting the `innerHTML` property or by overthinking selectors so our styles and logic don't mess up with the wrong element.
+Los Web Components han venido para quedarse. Van mejorando poco a poco; y tan solo pueden seguir mejorando. Quién sabe si en un futuro veremos algún mecanismo de reactividad, alguna manera más ergonómica de atacar la componetización y el renderizado en el cliente, mejoras en accesibilidad y rendimiento, compatibilidad entre navegadores...
+
+Quién sabe qué nos deparan los avances de la plataforma web. Quizás entonces; y solo entonces, podamos compararlo con React o cualquier otro framework. Hasta entonces, tan solo podemos compararlos con los miles de mecanismos que ya encontramos en la plataforma web.

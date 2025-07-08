@@ -32,10 +32,10 @@ const replaceDOM = async (detail) => {
   document.querySelector('header').scrollIntoView()
 };
 
-globalThis.addEventListener("page:changed", ({ detail }) => {
-  document.startViewTransition(async () => {
+globalThis.addEventListener("page:changed", async ({ detail }) => {
+  document.startViewTransition?.(async () => {
     await replaceDOM(detail);
-  });
+  }) ?? await replaceDOM(detail);
 });
 
 globalThis.addEventListener("popstate", () => {
