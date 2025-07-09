@@ -14,6 +14,12 @@ export default [
     },
   },
   {
+    path: "/el-menda/",
+    handler: async () => {
+      return await render("about")
+    }
+  },
+  {
     path: "/explora/",
     name: "explore",
     handler: async () => {
