@@ -11,4 +11,5 @@ export default {
     tags: ["opinión"],
     description: "Internet está jodido. Nosotras también. Estamos reduciendo la tierra a cenizas y la IA está hasta en la puta sopa. Que paren el carro, que me bajo.",
     slug: "elijo-lo-humano",
+    status: "published"
 }

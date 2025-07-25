@@ -20,6 +20,7 @@ export type Metadata = {
     updatedDate?: Date,
     author: string,
     tags: string[],
+    status: "draft" | "published",
     image: {
         url: string,
         alt: string

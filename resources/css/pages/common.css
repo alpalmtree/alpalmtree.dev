@@ -14,7 +14,7 @@ body {
   line-height: 1.7;
   display: flex;
   flex-direction: column;
-  
+
   & > * {
     width: 100%;
   }
@@ -147,12 +147,19 @@ footer {
 }
 
 @view-transition {
-    navigation: auto;
+  navigation: auto;
 }
 
 /* Customize the default animation behavior */
 
 ::view-transition-group(root) {
-    animation-duration: 0.3s;
+  animation-duration: 0.3s;
 }
 
+.post-list li {
+  margin-block-start: 1.5rem;
+}
+
+.pub-date {
+  font-family: "Courier New", Courier, monospace;
+}

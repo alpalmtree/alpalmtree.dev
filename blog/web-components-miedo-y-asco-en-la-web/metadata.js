@@ -10,4 +10,5 @@ export default {
     tags: ["web-components", "javascript"],
     description: "Causantes de decepción en algunas personas e ilusión de un mundo sin React en otras. ¿Y si cambiamos la perspectiva un poquito?" ,
     slug: "web-components-miedo-y-asco-en-la-web",
+    status: "published"
 }

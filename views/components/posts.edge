@@ -1,12 +1,20 @@
-<ul role="list" class="grid post-list">
+<ul role="list" class="post-list">
   @each(post in posts)
   <li>
     <view-link>
       <a href={{ `/blog/${post.slug}/`}}>
         <article class="flow">
-          <img src="{{ `/resources/images/blog/${post.image.url}/img_sm.webp` }}" alt="{{ post.image.alt }}">
           <h3>{{ post.title }}</h3>
-          <p>{{ post.description }}</p>
+          <p class="pub-date">
+            <strong>{{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short" }).format(post.pubDate)
+              }} | {{ post.author }}</strong>
+            @if(post.updatedDate)
+            <strong>| Actualizado el {{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short"
+              }).format(post.updatedDate)
+              }}</strong>
+            @end
+          </p>
+          <p>{{{ post.description }}}</p>
         </article>
       </a>
     </view-link>
