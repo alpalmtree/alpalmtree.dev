@@ -3,7 +3,7 @@
   "tasks": {
     "dev": "deno run  -A --watch lib/mod.js",
     "build": "deno run -A lib/mod.js build && deno run build:rs",
-    "build:rs": "esbuild --bundle --minify --sourcemap=inline ./resources/js/pages/*.js --outdir=./.build/resources/js/pages && esbuild --bundle --minify --sourcemap=inline ./resources/css/pages/*.css --outdir=./.build/resources/css/pages",
+    "build:rs": "esbuild --bundle --minify ./resources/js/pages/*.js --outdir=./.build/resources/js/pages && esbuild --bundle --minify ./resources/css/pages/*.css --outdir=./.build/resources/css/pages",
     "img": "deno run -A lib/scripts/imageProcessing.js"
   },
   "compilerOptions": {
