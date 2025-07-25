@@ -37,9 +37,7 @@
 }
 
 .post-list {
-  a {
-    text-decoration: none;
-  }
+
   h3 {
     font-size: var(--size-step-1);
   }
