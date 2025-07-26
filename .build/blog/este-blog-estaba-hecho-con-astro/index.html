@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Este blog estaba hecho con Astro | El jardín de Al</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
+    <meta name="description" content="Pero me dije a mí mismo: ¿Dónde está la gracia? Así que decidí migrarlo a mi propio SSG hecho desde 0, en menos de 100 líneas de JS.">
+    
+            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1753529724377">
+        
+    
+            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1753529724377">
+        
+
+    
+            <script type="module" src="/resources/js/pages/common.js?rel=1753529724377"></script>
+        
+</head>
+
+<body><header class="container lg">
+    <nav>
+        <ul role="list">
+            <li>
+                <view-link>
+                    <a href="/" class="logo" aria-label="Enlace a la página de inicio">🍂</a>
+                </view-link>
+            </li>
+        </ul>
+        <ul role="list">
+            <li>
+                <view-link>
+                    <a href="/explora/">Explora</a>
+                </view-link>
+            </li>
+            <li>
+                <view-link>
+                    <a href="/el-menda/">El menda</a>
+                </view-link>
+            </li>
+            <li><x-toggle>
+  <label>
+    <!-- From Uiverse.io by JkHuger -->
+    <input class="toggle-checkbox" type="checkbox" name="dark-light" aria-label="Cambia entre el modo claro y oscuro"/>
+    <div class="toggle-slot">
+      <div class="sun-icon-wrapper">
+        <div
+          class="iconify sun-icon"
+          data-icon="feather-sun"
+          data-inline="false"
+        >
+        </div>
+      </div>
+      <div class="toggle-button"></div>
+      <div class="moon-icon-wrapper">
+        <div
+          class="iconify moon-icon"
+          data-icon="feather-moon"
+          data-inline="false"
+        >
+        </div>
+      </div>
+    </div>
+  </label>
+</x-toggle>
+            </li>
+        </ul>
+    </nav>
+</header>
+    <view-partial script="/resources/js/pages/post.js?rel=1753529724377">
+        <main>
+            <article class="flow">
+                <h1>Este blog estaba hecho con Astro</h1>
+                <p class="lede">Pero me dije a mí mismo: ¿Dónde está la gracia? Así que decidí migrarlo a mi propio SSG hecho desde 0, en menos de 100 líneas de JS.</p>
+                <p class="pub-date">
+                    <strong>25/7/25 | Álvaro Palma</strong>
+                </p>
+                <hr>
+                <p>Si eres lectora habitual de este blog, ya sabrás que me gusta reinventar la rueda. Me gusta ir sin prisa, haciendo las cosas con cuidado y procurando pasármelo lo mejor posible por el camino.</p>
+<p>El título no engaña. La primera versión de este blog estaba hecha con Astro; pero así como se me ocurren todas las ideas locas, un día me levanté y me pregunté: ¿seré capaz de hacerme un <em>Static Site Generator</em> desde absoluto cero?</p>
+<p>Me gustan los retos, así que decidí ponerme manos a la obra. <em>Spoiler</em>: me gustó tanto que al final decidí quedarme con esto y bueno, lo que estás leyendo es el resultado de aproximadamente un fin de semana tonto que se me pasó volando.</p>
+<h2>Más de lo que necesitamos</h2>
+<p>Tanto en otros proyectos como este, me di cuenta de que Astro es un proyecto increíble. En todos los sentidos. Te da prácticamente todo lo que necesitas para crear tanto sitios estáticos como aplicaciones web. Mecanismos de hidratación, <em>bundling</em> de assets, <em>View Transitions</em>, colecciones de contenido para tener intellisense y tipado...</p>
+<p>Vamos, un montón de historias que en efecto son super útiles, pero que para un simple blog personal me parecen demasiado. Cada dos por tres, me encontraba buscando &quot;cómo hacer X en Astro&quot;. Por supuesto la experiencia te lleva a menos búsquedas, pero aun así, me sentía abotargado por tanta información y por tantas piezas en movimiento que desconocía.</p>
+<p>Astro es increíble, pero tiene mucha magia detrás que me incomoda. Tampoco me gusta sentirme productivo cuando no tengo prisa por hacer algo. Me gusta disfrutar del camino y no tanto del producto final.</p>
+<h2>Conociendo hasta el más recóndito rincón de tu proyecto</h2>
+<p>Me propuse hacer un generador estático lo más minimalista posible. Sin funcionalidades innecesarias o que &quot;están bien, pero no merecen la pena en cuanto a complejidad&quot;.</p>
+<p>Esto significa: sin dependencias más allá de las estrictamente necesarias. Sin <em>file-based routing</em>. Sin paso de construcción para el código fuente y que tenga la mayor independencia posible del resto de la infraestructura (como el motor de plantillas o la gestión y bundling de <em>assets</em>).</p>
+<p>Para esto, decidí simplemente usar Deno junto con la librería estándar. La experiencia ha sido formidable. Tanto durante el desarrollo como ahora que simplemente soy &quot;usuario&quot; (con privilegios, he de admitir), ya no tengo que buscar cómo hacer lo que sea en [inserte aquí su genereador estático]. Ahora, busco cómo hacerlo en Deno y, por consiguiente, también en la plataforma web.</p>
+<p>No solo me estoy llevando el aprendizaje de cómo trabajar con un framework, sino sobre cómo trabajar con un runtime específico de JavaScript que tiene la fortuna de parecerse enormemente a la plataforma web. Todo son ventajas, si me pregunta.</p>
+<h2>Al turrón</h2>
+<p>Estas son las 96 líneas que conforman el core de mi blog:</p>
+<code-hl>
+
+<pre><code class="language-js">import router from &quot;../router.js&quot;;
+import { serveDir } from &quot;@std/http/file-server&quot;;
+
+export const isBuild = Deno.args.at(0) === &quot;build&quot;;
+
+const routes = router.map((route) =&gt; ({
+  path: new URLPattern({ pathname: route.path }),
+  handler: route.handler,
+}));
+
+/** @param { Request } req */
+function handleRequest(req) {
+  const url = new URL(req.url);
+
+  if (url.pathname.startsWith(&quot;/resources&quot;)) {
+    return serveDir(req, {
+      fsRoot: Deno.cwd() + &quot;/resources&quot;,
+      urlRoot: &quot;resources&quot;,
+      headers: [
+        &quot;Cache-Control: no-store, no-cache, must-revalidate, max-age=0&quot;,
+        &quot;Pragma: no-cache&quot;,
+        &quot;Cache-Control: post-check=0, pre-check=0&quot;,
+      ],
+    });
+  }
+
+  for (const route of routes) {
+    const match = route.path.exec(url);
+    if (match) {
+      const params = match.pathname.groups;
+      return route.handler({ req, params });
+    }
+  }
+
+  return new Response(&quot;Not found&quot;, { status: 404 });
+}
+
+const build = async () =&gt; {
+  const { copySync } = await import(&quot;jsr:@std/fs/copy&quot;);
+  const dynamicPaths = [];
+
+  const buildPath = `${Deno.cwd()}/.build`;
+
+  try {
+    Deno.removeSync(buildPath, { recursive: true });
+  } catch (_) { /** */ }
+
+  Deno.mkdirSync(buildPath);
+  copySync(`${Deno.cwd()}/resources`, `${buildPath}/resources`);
+
+  for (const route of router) {
+    if (route.path.includes(&quot;:&quot;)) {
+      dynamicPaths.push(route);
+      continue;
+    }
+
+    const res = await handleRequest(
+      new Request(new URL(route.path, &quot;http://localhost:8000/&quot;)),
+    );
+    const content = await res.text();
+
+    if (route.path === &quot;/&quot;) {
+      Deno.writeTextFileSync(`${buildPath}/index.html`, content);
+      continue;
+    }
+
+    Deno.mkdirSync(`${buildPath}/${route.path}`);
+    Deno.writeTextFileSync(`${buildPath}/${route.path}/index.html`, content);
+  }
+  const staticPathsFromDynamic = [];
+  for await (const route of dynamicPaths) {
+    const params = await route.staticPaths();
+
+    const transformedPath = params.map((p) =&gt; {
+      let path = route.path;
+      Object.entries(p).forEach(([k, v]) =&gt; {
+        path = path.replace(`:${k}`, v);
+      });
+      return path;
+    });
+    staticPathsFromDynamic.push(...transformedPath);
+  }
+
+  for (const route of staticPathsFromDynamic) {
+    const res = await handleRequest(
+      new Request(new URL(route, &quot;http://localhost:8000/&quot;)),
+    );
+    const content = await res.text();
+    Deno.mkdirSync(`${buildPath}${route}`, { recursive: true });
+    Deno.writeTextFileSync(`${buildPath}${route}/index.html`, content);
+  }
+};
+
+if (import.meta.main) {
+  isBuild ? build() : Deno.serve(handleRequest);
+}
+</code></pre>
+</code-hl>
+
+<p>El router en cuestión que importo en la primera línea es algo así:</p>
+<code-hl>
+
+<pre><code class="language-js">/** @type {import(&#39;#types&#39;).Router} */
+export default [
+  {
+    path: &quot;/&quot;,
+    name: &quot;home&quot;,
+    handler: async () =&gt; {
+      return await render(&quot;index&quot;, {
+        posts: allPostsMetadata,
+      });
+    },
+  },
+  {
+    path: &quot;/blog/:slug/&quot;,
+    staticPaths: () =&gt; {
+      return [{ slug: &quot;slug-1&quot; }, { slug: &quot;slug-2&quot; }];
+    },
+    handler: async (ctx) =&gt; {
+      const { default: metadata } = await import(
+        `${Deno.cwd()}/blog/${ctx.params.slug}/metadata.js`
+      );
+      const content = Deno.readTextFileSync(
+        `${Deno.cwd()}/blog/${ctx.params.slug}/post.md`,
+      );
+
+      return await render(&quot;$post&quot;, {
+        post: metadata,
+        content: marked.parse(content),
+      });
+    },
+  },
+]
+</code></pre>
+</code-hl>
+
+<ol>
+<li>Para servir los assets, estoy usando el método <code>serveDir</code> de la librería estándar <code>http</code> de Deno. Tan simple como suena, le pasas un directorio y te lo sirve como assets estáticos.</li>
+<li>Las rutas definidas en el archivo de <code>routes.js</code> las transformo en <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API"><code>URLPattern</code>s</a> con sus respectivos handlers para poder hacer el enrutado durante desarrollo y durante el build. Creo que merece la pena mencionar que este método es terriblemente ineficiente para el enrutado; pero al tratarse de un routing que funciona solo durante el tiempo de construcción, merece la pena por tal de ahorrarnos una dependencia. Si en el futuro quisiera usar esta base para habilitar también la construcción de aplicaciones, probablemente usaría alguna librería de enrutado.</li>
+<li>Tenemos una función (<code>handleRequest</code>) que acepta un objeto <code>Request</code> (nativo de la web, gracias Deno &lt;3). Durante desarrollo, se lo pasamos directamente a <code>Deno.serve</code>. Durante la construcción de las páginas estáticas, nos servirá para proporcionarnos la misma respuesta que obtendríamos en el navegador para poder trabajar con ella.</li>
+<li>El <em>build</em> es muy sencillo. Básicamente, tenemos los <em>paths</em> estáticos y los dinámicos (marcados con <code>:param_name</code> en la ruta). Los estáticos no tienen mucho misterio. Básicamente le pasamos un <code>Request</code>, leemos la respuesta y la guardamos como archivo. Los dinámicos tienen algo más de complejidad (fue un reto interesante jeje), así que usa el método <code>staticPaths</code> para generar rutas que funcionarían como rutas estáticas hardcodeadas. Al más puro estilo Astro o NextJS, sin más fantasía.</li>
+</ol>
+<h2>Las piezas móviles</h2>
+<p>Sería muy presuntuoso y naíf por mi parte decir que basta con esto. Lo único que resuelve lo anteriormente expuesto es el tema de enrutado para desarrollo y <em>build</em> así como la generación de HTML estático. Al final esto fue lo más difícil de conseguir; y el resto de cuestiones no son más que piezas móviles que están separadas de la lógica general.</p>
+<p>Así como pensaba que me sentía capaz de hacer un generador de sitios estáticos desde cero, no es lo mismo para el resto de piezas aquí listadas. Temas como <em>parsing</em> o <em>bundling</em> se escapan por completo de mis capacidades actuales, por lo que tiene todo el sentido del mundo que use librerías (creo yo, ¿no?).</p>
+<ul>
+<li><a href="https://edgejs.dev/docs/introduction">Edge.js</a>: Motor de plantillas al más puro estilo blade. Permite usar componibilidad frente a herencia, insertar expresiones de JavaScript y usar directivas para el flujo de renderizado. Aunque se puede usar (y de hecho, lo uso) de forma totalmente independiente, pertenece al ecosistema de <a href="https://adonisjs.com/">AdonisJS</a>.</li>
+<li><a href="https://marked.js.org/">Marked</a>: Librería de conversión de markdown a HTML. Muy, muy simple.</li>
+<li><a href="https://github.com/speed-highlight/core">Speed Highlight</a>: Librería para hacer <em>syntax highlight</em> de los ejemplos de código. Lo uso direactamente en el cliente porque es muy ligera (~ 3kb en total) y me evita tener que extraer y sobreescribir los ejemplos del markdown. Estoy pensando, no obstante, en tomarme el tiempo extra para hacerlo. Ya veremos.</li>
+<li><a href="https://esbuild.github.io/">Esbuild</a>: Creo que a estas alturas, huelgan las explicaciones sobre qué es Esbuild. Básicamente, prefiero usarlo antes que trabajar directamente con Vite o proyectos del estilo porque me permite usar los mecanismos nativos de la web durante tiempo de desarrollo; y sé que una vez que se haya hecho el paso de construcción, todo seguirá funcionando igual. Me parece mucho menos intrusivo y, si el día de mañana quiero cambiar a otro <em>bundler</em>, puedo hacerlo sin problema.</li>
+</ul>
+<p>Mención honorífica a <a href="https://sharp.pixelplumbing.com/">sharp</a>. Es lo que uso para crear imágenes redimensionadas en <code>webp</code> para los distintos breakpoints.</p>
+<p>Con respecto al front, puso y simple javascript con web components. Sencillo, exquisito. Una delicia para trabajar.</p>
+<h2>Conclusiones</h2>
+<p>La clave está en sopesar las situaciones. En mi caso, me sentía capaz de crear y mantener un generador de sitios estáticos, así que lo hice. Me lo pasé super bien y aprendí un montón de cosas por el camino. Pero no me sentí capaz de enfrentarme a temas como motores de plantillas, conversión de markdown a HTML o syntax highlighing, así que decidí usar librerías.</p>
+<p>¿De qué te sientes tú capaz? ¿Con qué te merece la pena pelearte por tal de aprender y sacar a relucir tu creatividad? Eso ya es cosa tuya. Si quieres usar Astro, por favor, hazlo. Se merecen todo el amor del mundo. Si quieres usar un framework para la interactividad en lugar de vanilla JS, a tope.</p>
+<p>El código lo tenemos que disfrutar todas. Si no disfrutas lo que estás haciendo (y lo estás haciendo en tu tiempo libre), busca herramientas que te ayuden a mitigar eso. Yo estoy quizás un poco ido de la olla y me encanta complicarme la vida, pero respeto totalmente lo que tú decidas hacer; y si por algún motivo, mis indagaciones y resultados te inspiran, me iré a dormir más contento todavía.</p>
+<p>Gracias por leerme y hasta la próxima ❤️.</p>
+
+            </article>
+        </main><template id="copy-code">
+  <button class="copy" aria-label="Copy code">
+    <span
+      data-text-end="Copied!"
+      data-text-initial="Copy to clipboard"
+      class="tooltip"
+    ></span>
+    <span>
+      <svg
+        xml:space="preserve"
+        style="enable-background: new 0 0 512 512"
+        viewBox="0 0 6.35 6.35"
+        y="0"
+        x="0"
+        height="20"
+        width="20"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        class="clipboard"
+      >
+        <g>
+          <path
+            fill="currentColor"
+            d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z"
+          >
+          </path>
+        </g>
+      </svg>
+      <svg
+        xml:space="preserve"
+        style="enable-background: new 0 0 512 512"
+        viewBox="0 0 24 24"
+        y="0"
+        x="0"
+        height="18"
+        width="18"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        class="checkmark"
+      >
+        <g>
+          <path
+            data-original="#000000"
+            fill="currentColor"
+            d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
+          >
+          </path>
+        </g>
+      </svg>
+    </span>
+  </button>
+</template>
+
+    </view-partial><footer>
+    <div class="container">
+        <hr />
+        <p>
+            <small>
+                Código y contenido generado por mí mismo o copiado y debidamente acreditado de otro ser humano. Ninguna IA ha tenido nada que ver con todo esto.
+                <br>
+                Que le jodan a la IA. Que le jodan al capitalismo.
+            </small>
+        </p>
+        <nav>
+            <ul role="list">
+                <li>
+                    <small>© Álvaro Palma, 2025</small>
+                </li>
+            </ul>
+            <ul role="list">
+                <li>
+                    <a href="https://github.com/alpalmtree" target="_blank" aria-label="github profile">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2">
+                            <path stroke-dasharray="32" stroke-dashoffset="32"
+                                d="M12 4c1.67 0 2.61 0.4 3 0.5c0.53 -0.43 1.94 -1.5 3.5 -1.5c0.34 1 0.29 2.22 0 3c0.75 1 1 2 1 3.5c0 2.19 -0.48 3.58 -1.5 4.5c-1.02 0.92 -2.11 1.37 -3.5 1.5c0.65 0.54 0.5 1.87 0.5 2.5c0 0.73 0 3 0 3M12 4c-1.67 0 -2.61 0.4 -3 0.5c-0.53 -0.43 -1.94 -1.5 -3.5 -1.5c-0.34 1 -0.29 2.22 0 3c-0.75 1 -1 2 -1 3.5c0 2.19 0.48 3.58 1.5 4.5c1.02 0.92 2.11 1.37 3.5 1.5c-0.65 0.54 -0.5 1.87 -0.5 2.5c0 0.73 0 3 0 3">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="1.05s" values="32;0" />
+                            </path>
+                            <path stroke-dasharray="10" stroke-dashoffset="10"
+                                d="M9 19c-1.41 0 -2.84 -0.56 -3.69 -1.19c-0.84 -0.63 -1.09 -1.66 -2.31 -2.31">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.2s" dur="0.3s"
+                                    values="10;0" />
+                            </path>
+                        </g>
+                    </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://bsky.app/profile/alpalmtree.dev" target="_blank" aria-label="bluesky profile">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-dasharray="80" stroke-dashoffset="80" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.47 5.94c1.83 1.37 3.81 4.14 4.53 5.63c0.72 -1.49 2.7 -4.26 4.53 -5.63c1.33 -0.99 3.47 -1.75 3.47 0.68c0 0.49 -0.28 4.08 -0.45 4.66c-0.57 2.03 -2.65 2.55 -4.5 2.23c3.24 0.55 4.06 2.36 2.28 4.17c-3.38 3.44 -4.85 -0.87 -5.23 -1.97c-0.07 -0.2 -0.1 -0.3 -0.1 -0.22c-0 -0.08 -0.03 0.02 -0.1 0.22c-0.38 1.1 -1.86 5.41 -5.23 1.97c-1.78 -1.81 -0.96 -3.63 2.28 -4.17c-1.85 0.31 -3.93 -0.21 -4.5 -2.23c-0.17 -0.58 -0.45 -4.18 -0.45 -4.66c0 -2.43 2.14 -1.67 3.47 -0.68Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.9s" values="80;0"/></path></svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -6,7 +6,6 @@ import { allPostsMetadata, slugs } from "./services/posts.service.js";
 export default [
   {
     path: "/",
-    name: "home",
     handler: async () => {
       return await render("index", {
         posts: allPostsMetadata,
@@ -21,7 +20,6 @@ export default [
   },
   {
     path: "/explora/",
-    name: "explore",
     handler: async () => {
       const { default: taxonomies } = await import("./blog/taxonomies.js");
       return await render("explore", {
