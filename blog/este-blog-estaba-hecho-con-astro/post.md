@@ -187,7 +187,9 @@ Así como pensaba que me sentía capaz de hacer un generador de sitios estático
 
 Mención honorífica a [sharp](https://sharp.pixelplumbing.com/). Es lo que uso para crear imágenes redimensionadas en `webp` para los distintos breakpoints.
 
-Con respecto al front, puso y simple javascript con web components. Sencillo, exquisito. Una delicia para trabajar.
+Con respecto al frontend, puro y simple vanilla javascript con web components. Sencillo, exquisito. Una delicia para trabajar.
+
+Si quieres, le puedes echar un vistazo al <a href="https://github.com/alpalmtree/alpalmtree.dev" aria-label="código fuente de este blog">código fuente</a> para ver el resto de tonterías:
 
 ## Conclusiones
 
