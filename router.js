@@ -1,4 +1,4 @@
-import { render } from "./lib/helpers.js";
+import { highlightCodeSnippets, render } from "./lib/helpers.js";
 import { marked } from "marked";
 import { allPostsMetadata, slugs } from "./services/posts.service.js";
 
@@ -15,8 +15,8 @@ export default [
   {
     path: "/el-menda/",
     handler: async () => {
-      return await render("about")
-    }
+      return await render("about");
+    },
   },
   {
     path: "/explora/",
@@ -58,7 +58,7 @@ export default [
 
       return await render("$post", {
         post: metadata,
-        content: marked.parse(content),
+        content: await highlightCodeSnippets(marked.parse(content)),
       });
     },
   },
