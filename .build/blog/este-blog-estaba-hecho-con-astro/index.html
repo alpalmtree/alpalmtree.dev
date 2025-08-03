@@ -9,14 +9,14 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     <meta name="description" content="Pero me dije a mí mismo: ¿Dónde está la gracia? Así que decidí migrarlo a mi propio SSG hecho desde 0, en menos de 100 líneas de JS.">
     
-            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1754208284943">
+            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1754208962439">
         
     
-            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1754208284943">
+            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1754208962439">
         
 
     
-            <script type="module" src="/resources/js/pages/common.js?rel=1754208284943"></script>
+            <script type="module" src="/resources/js/pages/common.js?rel=1754208962439"></script>
         
 </head>
 
@@ -69,13 +69,14 @@
         </ul>
     </nav>
 </header>
-    <view-partial script="/resources/js/pages/post.js?rel=1754208284944">
+    <view-partial script="/resources/js/pages/post.js?rel=1754208962440">
         <main>
             <article class="flow">
                 <h1>Este blog estaba hecho con Astro</h1>
                 <p class="lede">Pero me dije a mí mismo: ¿Dónde está la gracia? Así que decidí migrarlo a mi propio SSG hecho desde 0, en menos de 100 líneas de JS.</p>
                 <p class="pub-date">
                     <strong>25/7/25 | Álvaro Palma</strong>
+                    <strong>| Actualizado el 3/8/25</strong>
                 </p>
                 <hr>
                 <head></head><body><p>Si eres lectora habitual de este blog, ya sabrás que me gusta reinventar la rueda. Me gusta ir sin prisa, haciendo las cosas con cuidado y procurando pasármelo lo mejor posible por el camino.</p>
@@ -242,7 +243,8 @@
 <ul>
 <li><a href="https://edgejs.dev/docs/introduction">Edge.js</a>: Motor de plantillas al más puro estilo blade. Permite usar componibilidad frente a herencia, insertar expresiones de JavaScript y usar directivas para el flujo de renderizado. Aunque se puede usar (y de hecho, lo uso) de forma totalmente independiente, pertenece al ecosistema de <a href="https://adonisjs.com/">AdonisJS</a>.</li>
 <li><a href="https://marked.js.org/">Marked</a>: Librería de conversión de markdown a HTML. Muy, muy simple.</li>
-<li><a href="https://github.com/speed-highlight/core">Speed Highlight</a>: Librería para hacer <em>syntax highlight</em> de los ejemplos de código. Lo uso direactamente en el cliente porque es muy ligera (~ 3kb en total) y me evita tener que extraer y sobreescribir los ejemplos del markdown. Estoy pensando, no obstante, en tomarme el tiempo extra para hacerlo. Ya veremos.</li>
+<li><a href="https://shiki.matsu.io/">Shiki</a>: Si conoces Astro, creo que sobran las presentaciones. Es una librería muy sencilla para hacer <em>syntax highlight</em> de los ejemplos de código. Funciona sin hojas de estilos ni javascript adicionales en el cliente. Antes, usaba <a href="https://github.com/speed-highlight">Speed Highlight</a> directamente en el cliente porque era bastante complicado extraer los ejemplos de código y luego reemplazarlos en el servidor, pero gracias a <code>deno-dom</code>, pude hacer el cambio muy fácilmente.</li>
+<li><a href="https://github.com/b-fuze/deno-dom">Deno DOM</a>: Implementación eficiente de la clase <code>DOMParser</code> para Deno. Es lo que me permite extraer los ejemplos de código y reemplazarlos por la parte procesada por Shiki; utilizando sintaxis de DOM en lugar de expresiones regulares. Tengo planes de usarla de forma más extensa, pero por lo pronto, aquí se queda.</li>
 <li><a href="https://esbuild.github.io/">Esbuild</a>: Creo que a estas alturas, huelgan las explicaciones sobre qué es Esbuild. Básicamente, prefiero usarlo antes que trabajar directamente con Vite o proyectos del estilo porque me permite usar los mecanismos nativos de la web durante tiempo de desarrollo; y sé que una vez que se haya hecho el paso de construcción, todo seguirá funcionando igual. Me parece mucho menos intrusivo y, si el día de mañana quiero cambiar a otro <em>bundler</em>, puedo hacerlo sin problema.</li>
 </ul>
 <p>Mención honorífica a <a href="https://sharp.pixelplumbing.com/">sharp</a>. Es lo que uso para crear imágenes redimensionadas en <code>webp</code> para los distintos breakpoints.</p>
