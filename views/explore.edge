@@ -9,11 +9,9 @@
 <ul role="list" class="grid">
     @each(tag in tags)
     <li class="card">
-        <view-link>
-            <a href="/explora/{{ tag }}/">
-                {{ titleCase(tag).replaceAll("-", " ") }}
-            </a>
-        </view-link>
+        <a href="/explora/{{ tag }}/">
+            {{ titleCase(tag).replaceAll("-", " ") }}
+        </a>
     </li>
     @end
 </ul>

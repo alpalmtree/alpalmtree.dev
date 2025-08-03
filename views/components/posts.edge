@@ -3,10 +3,7 @@
   <li>
     <article class="flow">
       <h3>
-        <view-link>
-          <a href={{ `/blog/${post.slug}/`}}>{{ post.title }}</a>
-        </view-link>
-
+        <a href={{ `/blog/${post.slug}/`}}>{{ post.title }}</a>
       </h3>
       <p class="pub-date">
         <strong>{{ new Intl.DateTimeFormat("es-ES", { dateStyle: "short" }).format(post.pubDate)
