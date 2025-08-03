@@ -9,14 +9,14 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     <meta name="description" content="¿Te acuerdas de Deno bundle? ¡Ha vuelto! ¡En forma de &lt;s&gt;chapa&lt;/s&gt; bundler moderno! Deja que te explique por qué me emociona tanto.">
     
-            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1753531983586">
+            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1754208284961">
         
     
-            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1753531983586">
+            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1754208284961">
         
 
     
-            <script type="module" src="/resources/js/pages/common.js?rel=1753531983586"></script>
+            <script type="module" src="/resources/js/pages/common.js?rel=1754208284961"></script>
         
 </head>
 
@@ -69,7 +69,7 @@
         </ul>
     </nav>
 </header>
-    <view-partial script="/resources/js/pages/post.js?rel=1753531983587">
+    <view-partial script="/resources/js/pages/post.js?rel=1754208284961">
         <main>
             <article class="flow">
                 <h1>Ha vuelto Deno bundle</h1>
@@ -78,26 +78,26 @@
                     <strong>11/7/25 | Álvaro Palma</strong>
                 </p>
                 <hr>
-                <p>El dos de julio de este mismo año, <a href="https://deno.com/blog/v2.4">Deno anunció la vuelta de <code>deno bundle</code></a>; y está guapísimo.</p>
+                <head></head><body><p>El dos de julio de este mismo año, <a href="https://deno.com/blog/v2.4">Deno anunció la vuelta de <code>deno bundle</code></a>; y está guapísimo.</p>
 <p>Si no sabes nada de Deno, te recomiendo que sigas algún tutorial. No tardarás mucho en conocer el concepto de las importaciones a través de URLs e <code>importmaps</code>.</p>
 <h2>Deno y el navegador</h2>
 <p>Te lo resumo muy brevemente: En los albores de las primeras versiones de Deno, se concibió para que pudiéramos usar dependencias sin necesidad de instalación, sino a través de URLs. Por ejemplo:</p>
 <code-hl>
 
-<pre><code class="language-js">import { Application, Router } from &quot;https://deno.land/x/oak/mod.ts&quot;;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">import</span><span style="color:#ECEFF4"> {</span><span style="color:#8FBCBB"> Application</span><span style="color:#ECEFF4">,</span><span style="color:#8FBCBB"> Router</span><span style="color:#ECEFF4"> }</span><span style="color:#81A1C1"> from</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">https://deno.land/x/oak/mod.ts</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Si alguna vez has usado importmaps en el navegador, sabrás que una de las desventajas que tiene es que pierdes por completo el intellisense. Puedes seguir la documentación de la librería en cuestión (o de tu propio código), pero trabajas como quien dice a ciegas.</p>
 <p>Sin embargo; y dado que las urls o dependencias remotas son el principal mecanismo de importación en Deno, este problema está más que resuelto. Si tienes un <em>workspace</em> de Deno activado, verás cómo, una vez cacheada la dependencia, obtienes el mismo intellisense que si de un módulo de Node se tratara.</p>
 <p>Años más tarde, el equipo de Deno reculó y creó <a href="https://jsr.io/">JSR</a> para poder trabajar con las dependencias de una forma mucho más ergonómica, al estilo de npm. Pero el concepto seguía estando ahí: una dependencia remota que se cachea en local si necesidad de una carpeta de <code>node_modules</code>.</p>
 <h2>¿Qué tiene que ver esto con <code>deno bundle</code>?</h2>
-<p>En julio de 2021, el equipo de Deno <a href="https://github.com/denoland/deno/issues/11073">decidió eliminar <code>deno bundle</code></a> bajo el pretexto de que &quot;los bundlers en JavaScript tienen mucha complejidad&quot; que no podían asumir en esos momentos.</p>
+<p>En julio de 2021, el equipo de Deno <a href="https://github.com/denoland/deno/issues/11073">decidió eliminar <code>deno bundle</code></a> bajo el pretexto de que "los bundlers en JavaScript tienen mucha complejidad" que no podían asumir en esos momentos.</p>
 <p>Esto significó que ahora, para poder realizar un bundle (especialmente para el servidor), necesitabas buscar otras herramientas. Posiblemente, la que más se popularizó fue esbuild.</p>
-<p>El <em>gran</em> problema venía por la manera en la que Deno trabajaba sus importaciones. Esbuild y otras herramientas del palo, esperan que el código exista &quot;en la carpeta del proyecto&quot;. Para las dependencias remotas, hubo que crear <em>plugins</em> y herramientas específicas que pudieran trabajar con imports de URL. Como de costumbre, te tocaba a ti buscar la herramienta adecuada y entender y asumir las limitaciones. Reconozco que me parece un movimiento muy noble optar por deprecar una funcionalidad que se te escapa de la capacidad, pero en cierto modo, dejaba un paso más lejos la esperanza de un <em>runtime</em> completo sin dependencias externas y con un ecosistema unificado.</p>
+<p>El <em>gran</em> problema venía por la manera en la que Deno trabajaba sus importaciones. Esbuild y otras herramientas del palo, esperan que el código exista "en la carpeta del proyecto". Para las dependencias remotas, hubo que crear <em>plugins</em> y herramientas específicas que pudieran trabajar con imports de URL. Como de costumbre, te tocaba a ti buscar la herramienta adecuada y entender y asumir las limitaciones. Reconozco que me parece un movimiento muy noble optar por deprecar una funcionalidad que se te escapa de la capacidad, pero en cierto modo, dejaba un paso más lejos la esperanza de un <em>runtime</em> completo sin dependencias externas y con un ecosistema unificado.</p>
 <h2>Vite, Parcel y otras vainas</h2>
 <p>Indudablemente, proyectos como Vite, Rspack o Parcel han sido (y siguen siendo) unas herramientas espectaculares que sirven no solo para hacer un simple bundle, sino también para ofrecerte una experiencia de desarrollo más cómoda y moderna. No obstante, su dependencia de la carpeta de <code>node_modules</code> las hacen radicalmente opuestas, en mi opinión, a la filosofía de <em>remote first</em> de Deno. Antes de la versión 2+ de Deno, normalmente para trabajar en una aplicación <em>Full Stack</em> o para trabajar en el frontend, lo más ergonómico era montarte un <em>setup</em> híbrido con Deno y Node; y pese a ello, en lo personal, no me merecía la pena y acababa descartando Deno por completo.</p>
-<p>Es una faena, la verdad, porque me gusta muchísimo trabajar con importmaps y dependencias remotas. Me parece que agilizan mucho el flujo de trabajo y que se acercan mucho más a una aproximación &quot;vanilla&quot;. Pero, por otro lado, es indudable que el paso de construcción es algo relativamente importante. Para prototipar, usar CDNs y evitar paso de construcción está genial, pero en aplicaciones reales es importante ahorrarle al navegador cuanta más descarga y menos procesamiento, mejor.</p>
+<p>Es una faena, la verdad, porque me gusta muchísimo trabajar con importmaps y dependencias remotas. Me parece que agilizan mucho el flujo de trabajo y que se acercan mucho más a una aproximación "vanilla". Pero, por otro lado, es indudable que el paso de construcción es algo relativamente importante. Para prototipar, usar CDNs y evitar paso de construcción está genial, pero en aplicaciones reales es importante ahorrarle al navegador cuanta más descarga y menos procesamiento, mejor.</p>
 <p>Entonces, si queremos tener un paso de construcción para nuestro front, ¿qué opciones tenemos? Te cuento las que he visto por ahí:</p>
 <ol>
 <li><strong>A tope con un setup de node_modules</strong>: Si usas Vite o herramientas similares, no hace falta que me explaye más. Levantas un servidor de desarrollo ya sea para levantar el cliente completo o para integrarlo con tu backend. Desde Deno 2.x, puedes usar Deno para ejecutarlas de forma totalmente normal, así que técnicamente puedes prescindir de Node y no es necesario hacer un <em>setup</em> híbrido.</li>
@@ -109,7 +109,7 @@
 <p>No solo nos devuelve la posibilidad de incluir en nuestros bundles las dependencias remotas, sino que además lo hace con algunas cosas muy útiles. Por ejemplo, la posibilidad de decidir si lo minificas o no, poder seleccionar el navegador como plataforma específica, decidir si queremos hacer <em>code splitting</em> ...</p>
 <p>Aún seguimos esperando una API para poder usarlo de forma programática, pero por lo pronto, resulta súper útil. Es prácticamente como usar esbuild pero sin tener que sacrificar tu workflow habitual de CDNs e importmaps.</p>
 <h2>Escribiendo frontend con Deno</h2>
-
+</body>
             </article>
         </main><template id="copy-code">
   <button class="copy" aria-label="Copy code">
@@ -166,6 +166,12 @@
   </button>
 </template>
 
+<template id="code-hl">
+  <details>
+    <summary></summary>
+    <slot></slot>
+  </details>
+</template>
     </view-partial><footer>
     <div class="container">
         <hr />

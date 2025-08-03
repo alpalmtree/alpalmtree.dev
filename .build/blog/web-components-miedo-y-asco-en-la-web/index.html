@@ -9,14 +9,14 @@
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍂</text></svg>" />
     <meta name="description" content="Causantes de decepción en algunas personas e ilusión de un mundo sin React en otras. ¿Y si cambiamos la perspectiva un poquito?">
     
-            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1753531983593">
+            <link rel="stylesheet" href="/resources/css/pages/common.css?rel=1754208285368">
         
     
-            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1753531983593">
+            <link rel="stylesheet" href="/resources/css/pages/post.css?rel=1754208285368">
         
 
     
-            <script type="module" src="/resources/js/pages/common.js?rel=1753531983593"></script>
+            <script type="module" src="/resources/js/pages/common.js?rel=1754208285368"></script>
         
 </head>
 
@@ -69,7 +69,7 @@
         </ul>
     </nav>
 </header>
-    <view-partial script="/resources/js/pages/post.js?rel=1753531983593">
+    <view-partial script="/resources/js/pages/post.js?rel=1754208285368">
         <main>
             <article class="flow">
                 <h1>Web Components: Miedo y Asco en la Web</h1>
@@ -78,63 +78,63 @@
                     <strong>14/6/25 | Álvaro Palma</strong>
                 </p>
                 <hr>
-                <p>Sinceramente, creo que lejos queda la virtud del término medio. Mientras que algunas personas piensan <a href="https://dev.to/ryansolid/web-components-are-not-the-future-48bh">que el coste de los Web Components</a> no justifica su caso de uso, otras opinan que &quot;se acabó usar React&quot;.</p>
-<p>Bueno, de hecho sí que existe un término medio (no te fíes de todo lo que diga un extraño en internet). Hace algún tiempo me topé con <a href="https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/">este artículo</a> al respecto; y creo que la argumentación está bastante bien expuesta. Existen otros al respecto donde se alaba el uso de los Web Components &quot;para lo que de verdad son útiles&quot;.</p>
-<p>Y sin embargo, ya sea a favor o en contra, casi toda la literatura que podemos encontrar en este respecto comente siempre el mismo error: comparar los Web Components con una librería / framework (de aquí en adelante, diremos simplemente <em>React</em>). Opino que es un error porque olvidan la idiosincrasia de los Web Components. A fin de cuentas, son una tecnología (de hecho, <strong>un conjunto de tecnologías</strong>) nativas de la plataforma web. Como tal, existen tantos casos de uso como programadoras hay en el mundo. La lista de casos que podemos enumerar como respuesta a la pregunta de &quot;<em>¿Para qué me sirven los Web Components?</em>&quot; crece con cada caso en el que tú le encuentres alguna utilidad.</p>
+                <head></head><body><p>Sinceramente, creo que lejos queda la virtud del término medio. Mientras que algunas personas piensan <a href="https://dev.to/ryansolid/web-components-are-not-the-future-48bh">que el coste de los Web Components</a> no justifica su caso de uso, otras opinan que "se acabó usar React".</p>
+<p>Bueno, de hecho sí que existe un término medio (no te fíes de todo lo que diga un extraño en internet). Hace algún tiempo me topé con <a href="https://nolanlawson.com/2023/08/23/use-web-components-for-what-theyre-good-at/">este artículo</a> al respecto; y creo que la argumentación está bastante bien expuesta. Existen otros al respecto donde se alaba el uso de los Web Components "para lo que de verdad son útiles".</p>
+<p>Y sin embargo, ya sea a favor o en contra, casi toda la literatura que podemos encontrar en este respecto comente siempre el mismo error: comparar los Web Components con una librería / framework (de aquí en adelante, diremos simplemente <em>React</em>). Opino que es un error porque olvidan la idiosincrasia de los Web Components. A fin de cuentas, son una tecnología (de hecho, <strong>un conjunto de tecnologías</strong>) nativas de la plataforma web. Como tal, existen tantos casos de uso como programadoras hay en el mundo. La lista de casos que podemos enumerar como respuesta a la pregunta de "<em>¿Para qué me sirven los Web Components?</em>" crece con cada caso en el que tú le encuentres alguna utilidad.</p>
 <p>Si esta es la primera vez que oyes hablar de los Web Components, te recomiendo que primero busques algún tutorial y entonces vuelvas por aquí. Cualquiera nos vale. Hay <strong>una barbaridad</strong> de artículos y vídeos sobre los Web Components. Te apuesto lo que quieras (menos dinero) a que tu <em>influencer</em> de referencia tiene algo al respecto.</p>
 <h2>Los tres pilares: El Shadow DOM, el elemento <code>template</code> y los Custom Elements</h2>
-<p>El término &quot;Web Components&quot; es realmente el nombre que se le da a estas tres tecnologías que podemos encontrar en cualquier navegador moderno. Normalmente, la tecnología más llamativa es la de los Custom Elements; y, por ende, es lo que más se usa para hablar y para poner ejemplos de uso de los Web Components.</p>
+<p>El término "Web Components" es realmente el nombre que se le da a estas tres tecnologías que podemos encontrar en cualquier navegador moderno. Normalmente, la tecnología más llamativa es la de los Custom Elements; y, por ende, es lo que más se usa para hablar y para poner ejemplos de uso de los Web Components.</p>
 <p>Vamos a repasarlas una por una, con casos de uso aislados los unos de los otros y en el contexto de Vanilla JavaScript.</p>
 <h3>Shadow DOM</h3>
-<p>En términos generales, el Shadow DOM nos permite crear un &quot;DOM&quot; encapsulado dentro de cualquier elemento HTML que pueda contener nodos anidados. Échale un ojo al artículo en <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">MDN</a>.</p>
+<p>En términos generales, el Shadow DOM nos permite crear un "DOM" encapsulado dentro de cualquier elemento HTML que pueda contener nodos anidados. Échale un ojo al artículo en <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM">MDN</a>.</p>
 <p>Normalmente, se suele usar mucho con los Custom Elements porque, mientras que los primeros ayudan a servir de <em>namespace</em> para métodos y propiedades, el Shadow DOM nos proporciona una encapsulación similar a la que podríamos ver en algunos frameworks.</p>
 <p>Veamos (muy por encima) un ejemplo:</p>
-<code-hl group="shadow-dom" name="app.js" open>
+<code-hl group="shadow-dom" name="app.js" open="">
 
-<pre><code class="language-js">const appRoot = document.getElementById(&quot;app-root&quot;);
-
-appRoot.attachShadow({ mode: &quot;open&quot; });
-const paragraph = document.createElement(&quot;p&quot;);
-paragraph.textContent = &quot;Inside shadow DOM&quot;;
-
-appRoot.shadowRoot.appendChild(paragraph);
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> appRoot</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">attachShadow</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">{</span><span style="color:#88C0D0"> mode</span><span style="color:#ECEFF4">:</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">open</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4"> }</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> paragraph</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">createElement</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">paragraph</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">Inside shadow DOM</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">shadowRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">appendChild</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">paragraph</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <code-hl group="shadow-dom" name="app.html">
 
-<pre><code class="language-html">&lt;p&gt;Outside shadow DOM&lt;/p&gt;
-&lt;div id=&quot;app-root&quot;&gt;&lt;/div&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;p&gt;</span><span style="color:#D8DEE9FF">Outside shadow DOM</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;div</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;&lt;/div&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Veremos lo siguiente en el inspector del navegador:</p>
 <code-hl>
 
-<pre><code class="language-html">&lt;p&gt;Outside shadow DOM&lt;/p&gt;
-&lt;div id=&quot;app-root&quot;&gt;
-  #shadow-root (open)
-    &lt;p&gt;Inside shadow DOM&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;p&gt;</span><span style="color:#D8DEE9FF">Outside shadow DOM</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;div</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9FF">  #shadow-root (open)</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;p&gt;</span><span style="color:#D8DEE9FF">Inside shadow DOM</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/div&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Como podrás imaginar, cosas como las siguientes no afectan al párrafo que se encuentra dentro del Shadow DOM:</p>
 <code-hl>
 
-<pre><code class="language-html">&lt;style&gt;
-  p {
-    color: red;
-  }
-&lt;/style&gt;
-&lt;script type=&quot;module&quot;&gt;
-  document
-    .querySelectorAll(&quot;p&quot;)
-    .forEach(
-      (p) =&gt; (p.textContent = &quot;Modified from JS&quot;)
-    );
-&lt;/script&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;style&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  p</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">    color</span><span style="color:#ECEFF4">:</span><span style="color:#81A1C1"> red;</span></span>
+<span class="line"><span style="color:#ECEFF4">  }</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/style&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;script</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">module</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9">  document</span></span>
+<span class="line"><span style="color:#ECEFF4">    .</span><span style="color:#88C0D0">querySelectorAll</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span></span>
+<span class="line"><span style="color:#ECEFF4">    .</span><span style="color:#88C0D0">forEach</span><span style="color:#D8DEE9FF">(</span></span>
+<span class="line"><span style="color:#ECEFF4">      (</span><span style="color:#D8DEE9">p</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#D8DEE9FF"> (</span><span style="color:#D8DEE9">p</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">Modified from JS</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span></span>
+<span class="line"><span style="color:#D8DEE9FF">    )</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/script&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Así que, si en algún momento te encuentras con la necesidad de tener un trozo de HTML al que no le afecten estilos ni scripts generales de la página, el Shadow DOM es tu herramienta.</p>
@@ -144,77 +144,77 @@ appRoot.shadowRoot.appendChild(paragraph);
 <p>Si sabes de qué va el tema de crear elementos HTML complejos con JavaScript, sabrás que puede llegar a ser algo tedioso. Por esto mismo tenemos el elemento <code>template</code>.</p>
 <p>La manera más sencilla, sin <code>template</code>s, sería probablemente haciendo uso de la propiedad <code>innerHTML</code>. Pero sabemos que no solo es ineficiente, sino que también puede llegar a ser problemático para casos de XSS. En general, ninguna parte de tu HTML que pueda estar controlada por algún tipo de input que no controles. Si aún sí quieres hacerlo con <code>innerHTML</code>, tienes que asegurarte de que esas partes dinámicas estás correctamente sanitizadas; y aún hay partes que se te podrían escapar. Un rollo, vamos.</p>
 <p>Aquí es donde entra el elemento <code>template</code>. Los <code>template</code>s pueden existir en el DOM que haya renderizado tu servidor, de modo que puedes usarlos para compartir información front-back. Sin embargo, no es hasta que tú explícitamente decides hacer algo con ellos que realmente se hacen visibles, de modo que tienes también la oportunidad de inyectar contenido dinámico de forma segura.</p>
-<code-hl group="template" name="app.js" open>
+<code-hl group="template" name="app.js" open="">
 
-<pre><code class="language-js">const appRoot = document.getElementById(&quot;app-root&quot;);
-const form = document.getElementById(&quot;hi-form&quot;);
-const messageTemplate = document.getElementById(&quot;message-template&quot;);
-
-form.addEventListener(&quot;submit&quot;, (e) =&gt; {
-  e.preventDefault();
-  const name = new FormData(e.target).get(&quot;name&quot;);
-  e.target.reset();
-
-  const message = messageTemplate.content.cloneNode(true);
-  message.querySelector(&quot;strong&quot;).textContent = name;
-
-  appRoot.querySelector(&quot;p&quot;)?.replaceWith(message);
-});
-
-const initialMessage = messageTemplate.content.cloneNode(true);
-initialMessage.querySelector(&quot;strong&quot;).textContent = &quot;stranger&quot;;
-appRoot.appendChild(initialMessage);
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> appRoot</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> form</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">hi-form</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> messageTemplate</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">message-template</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">form</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">addEventListener</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">  e</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">preventDefault</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">  const</span><span style="color:#D8DEE9"> name</span><span style="color:#81A1C1"> =</span><span style="color:#81A1C1"> new</span><span style="color:#88C0D0"> FormData</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">get</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">reset</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">  const</span><span style="color:#D8DEE9"> message</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> messageTemplate</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">content</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">cloneNode</span><span style="color:#D8DEE9FF">(</span><span style="color:#81A1C1">true</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  message</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">strong</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> name</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">  appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">?.</span><span style="color:#88C0D0">replaceWith</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">message</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">}</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> initialMessage</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> messageTemplate</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">content</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">cloneNode</span><span style="color:#D8DEE9FF">(</span><span style="color:#81A1C1">true</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">initialMessage</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">strong</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">stranger</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">appendChild</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">initialMessage</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <code-hl group="template" name="app.html">
 
-<pre><code class="language-html">&lt;div id=&quot;app-root&quot;&gt;
-    &lt;form action=&quot;#&quot; id=&quot;hi-form&quot;&gt;
-        &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
-        &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
-    &lt;/form&gt;
-&lt;/div&gt;
-&lt;template id=&quot;message-template&quot;&gt;
-    &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
-&lt;/template&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;div</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;form</span><span style="color:#8FBCBB"> action</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">#</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">hi-form</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;input</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">text</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> placeholder</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">Tell us your name</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> name</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1"> /&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;button</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span><span style="color:#D8DEE9FF">Send</span><span style="color:#81A1C1">&lt;/button&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/form&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/div&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;template</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">message-template</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;p&gt;</span><span style="color:#D8DEE9FF">Hello, </span><span style="color:#81A1C1">&lt;strong&gt;&lt;/strong&gt;</span><span style="color:#D8DEE9FF">! Welcome to my app!</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/template&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Crear elementos HTML con <code>document.createElement</code> y manipular sus atributos y propiedades de forma imperativa es ligeramente más rápido, pero creo que las ventajas de hacerlo a través de <code>template</code>s son evidentes. Es mucho más ergonómico que crearlos de forma programática y mucho más eficiente y seguro que usar <code>innerHTML</code> (además de, como mencioné anteriormente, poder renderizar en el servidor un trozo de HTML que luego puedes usar en el lado del cliente).</p>
 <h4>El elemento <code>template</code> y el Shadow DOM</h4>
 <p>Si hasta ahora estas dos tecnologías te han parecido útiles, tengo buenas noticias: forman un dúo <strong>muy</strong> bueno. Combiándolas y haciendo uso del elemento <code>slot</code>, podemos conseguir elementos mixtos de <em>light</em> y <em>shadow</em> DOM con composiciones relativamente complejas. Un ejemplo muy tonto pero que creo que ilustra muy bien las posibilidades. Nótese cómo no estamos escribiendo ni una sola línea de JavaScript para que funcione:</p>
-<code-hl group="template-shadow" name="app.html" open>
+<code-hl group="template-shadow" name="app.html" open="">
 
-<pre><code class="language-html">&lt;div id=&quot;app-root&quot;&gt;
-    &lt;p&gt;
-      I belong to the light DOM and I&#39;ll be placed between two red paragraphs
-    &lt;/p&gt;
-
-    &lt;template shadowrootmode=&quot;open&quot;&gt;
-      &lt;style&gt;
-        p {
-          color: red;
-        }
-      &lt;/style&gt;
-
-      &lt;p&gt;I belong to the shadow DOM and hence I&#39;m red&lt;/p&gt;
-      &lt;slot&gt;&lt;/slot&gt;
-      &lt;p&gt;I also belong to the shadow DOM&lt;/p&gt;
-    &lt;/template&gt;
-&lt;/div&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;div</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;p&gt;</span></span>
+<span class="line"><span style="color:#D8DEE9FF">      I belong to the light DOM and I'll be placed between two red paragraphs</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/p&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">    &lt;template</span><span style="color:#8FBCBB"> shadowrootmode</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">open</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;style&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        p</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">          color</span><span style="color:#ECEFF4">:</span><span style="color:#81A1C1"> red;</span></span>
+<span class="line"><span style="color:#ECEFF4">        }</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;/style&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">      &lt;p&gt;</span><span style="color:#D8DEE9FF">I belong to the shadow DOM and hence I'm red</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;slot&gt;&lt;/slot&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;p&gt;</span><span style="color:#D8DEE9FF">I also belong to the shadow DOM</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/template&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/div&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <code-hl group="template-shadow" name="app.js">
 
-<pre><code class="language-js">const appRoot = document.getElementById(&quot;app-root&quot;).shadowRoot;
-
-// Length: 2
-const shadowParagraphs = appRoot.querySelectorAll(&quot;p&quot;);
-// Length: 1
-const lightDOMParagraphs = document.querySelectorAll(&quot;p&quot;);
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> appRoot</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">shadowRoot</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#616E88">// Length: 2</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> shadowParagraphs</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelectorAll</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#616E88">// Length: 1</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> lightDOMParagraphs</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelectorAll</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Como ya mencioné anteriormente, el Shadow DOM tiene sus cosillas; y peor incluso si empezamos a mezclarlo también con el <em>light</em> DOM. Pero bueno, es cuestión de aprender a usarlos con cabeza. Personalmente, me fascina cómo podemos conseguir elementos híbridos donde tenemos una parte renderizada en el cliente (aunque de facto exista ya en el HTML del documento), con lógica y estilos encapsulados; y otra parte que sigue el flujo normal que esperas de tu DOM, con los estilos y lógica globales.</p>
@@ -223,71 +223,71 @@ const lightDOMParagraphs = document.querySelectorAll(&quot;p&quot;);
 <p>El matiz es importante. Recordemos que los Web Components son, en su conjunto, unas herramientas que podemos encontrar integradas en la plataforma web, no muy diferente de un <code>querySelector</code> o de un <code>MutationObserver</code>. Dada su idiosincrasia, los problemas que ayudan a resolver pueden estar ya cubiertos por algún framework o librería. Por ejemplo, temas como la encapsulación, la creación de plantillas de forma declarativa para usarlas a través de JavaScript o, como veremos, la organización de propiedades y métodos: Si ya estás usando algún framework como Angular, React o Vue, ya cuentas con mecanismos que resuelven todo esto, además de ofrecerte reactividad y otras cosillas tope guapas con mucha magia detrás.</p>
 <p>Para hablar de los Custom Elements, me gustaría alejarme del discurso tradicional de los cientos de tutoriales que hay por internet; y centrarme en lo que opino que son increíbles aislándolos de las otras dos herramientas:</p>
 <h4>Hidratar tu HTML de forma declarativa</h4>
-<p>Creo que la &quot;confusión&quot; (o simplemente, el uso de la comunidad) de los términos &quot;Web Components&quot; y &quot;Custom Elements&quot; nos han dado la clave bajo un concepto muy interesante: <em>HTML Web Components</em>.</p>
+<p>Creo que la "confusión" (o simplemente, el uso de la comunidad) de los términos "Web Components" y "Custom Elements" nos han dado la clave bajo un concepto muy interesante: <em>HTML Web Components</em>.</p>
 <p>En resumidas cuentas, este modelo de Web Components hace principalmente uso de los Custom Elements en un contexto en el que su contenido no necesita ser renderizado con JavaScript, sino que ya se encuentra en el DOM. Es una manera de asegurarte una mejora progresiva de tus aplicaciones sin necesidad de usar constantemente <code>querySelector</code>s. Para ejemplificarlo, vamos a complicar un poco más uno de los ejemplos anteriores:</p>
-<code-hl group="custom-elements" name="app.html" open>
+<code-hl group="custom-elements" name="app.html" open="">
 
-<pre><code class="language-html">&lt;body&gt;
-  &lt;header&gt;
-    &lt;nav&gt;
-      &lt;ul&gt;
-        &lt;li&gt;Some static content&lt;/li&gt;
-        &lt;li&gt;
-          &lt;input
-            id=&quot;toggle-schema&quot;
-            type=&quot;checkbox&quot;
-            aria-label=&quot;toggle dark and light mode&quot;
-          /&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/header&gt;
-  &lt;div id=&quot;app-root&quot;&gt;
-    &lt;form action=&quot;#&quot; id=&quot;hi-form&quot;&gt;
-      &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
-      &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
-    &lt;/form&gt;
-  &lt;/div&gt;
-  &lt;template id=&quot;message-template&quot;&gt;
-    &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
-  &lt;/template&gt;
-&lt;/body&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;body&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;header&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;nav&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;ul&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;li&gt;</span><span style="color:#D8DEE9FF">Some static content</span><span style="color:#81A1C1">&lt;/li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">          &lt;input</span></span>
+<span class="line"><span style="color:#8FBCBB">            id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">toggle-schema</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#8FBCBB">            type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">checkbox</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#8FBCBB">            aria-label</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">toggle dark and light mode</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#81A1C1">          /&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;/li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;/ul&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/nav&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;/header&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;div</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;form</span><span style="color:#8FBCBB"> action</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">#</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">hi-form</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;input</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">text</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> placeholder</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">Tell us your name</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> name</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1"> /&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;button</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span><span style="color:#D8DEE9FF">Send</span><span style="color:#81A1C1">&lt;/button&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/form&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;/div&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;template</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">message-template</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;p&gt;</span><span style="color:#D8DEE9FF">Hello, </span><span style="color:#81A1C1">&lt;strong&gt;&lt;/strong&gt;</span><span style="color:#D8DEE9FF">! Welcome to my app!</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;/template&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/body&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <code-hl group="custom-elements" name="app.js">
 
-<pre><code class="language-js">const toggleSchema = document.getElementById(&quot;toggle-schema&quot;);
-const appRoot = document.getElementById(&quot;app-root&quot;);
-const form = document.getElementById(&quot;hi-form&quot;);
-const messageTemplate = document.getElementById(&quot;message-template&quot;);
-
-const doToggle = (toggle) =&gt; {
-  document.body.dataset.theme = toggle.checked ? &quot;dark&quot; : &quot;light&quot;;
-};
-
-const createMessage = (text) =&gt; {
-  const message = messageTemplate.content.cloneNode(true);
-  message.querySelector(&quot;strong&quot;).textContent = text;
-  appRoot.querySelector(&quot;p&quot;)?.replaceWith(message) ??
-    appRoot.appendChild(message);
-};
-
-toggleSchema.addEventListener(&quot;change&quot;, ({ target }) =&gt; {
-  doToggle(target);
-});
-
-form.addEventListener(&quot;submit&quot;, (e) =&gt; {
-  e.preventDefault();
-  const name = new FormData(e.target).get(&quot;name&quot;);
-  e.target.reset();
-
-  createMessage(name);
-});
-
-doToggle(toggleSchema);
-createMessage(&quot;stranger&quot;);
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> toggleSchema</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">toggle-schema</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> appRoot</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> form</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">hi-form</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> messageTemplate</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> document</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">getElementById</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">message-template</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#88C0D0"> doToggle</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">toggle</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">  document</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">body</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">dataset</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">theme</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> toggle</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">checked</span><span style="color:#81A1C1"> ?</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">dark</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1"> :</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">light</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">}</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#88C0D0"> createMessage</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">text</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#81A1C1">  const</span><span style="color:#D8DEE9"> message</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> messageTemplate</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">content</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">cloneNode</span><span style="color:#D8DEE9FF">(</span><span style="color:#81A1C1">true</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  message</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">strong</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> text</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">?.</span><span style="color:#88C0D0">replaceWith</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">message</span><span style="color:#D8DEE9FF">) </span><span style="color:#81A1C1">??</span></span>
+<span class="line"><span style="color:#D8DEE9">    appRoot</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">appendChild</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">message</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">}</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">toggleSchema</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">addEventListener</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">change</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span><span style="color:#ECEFF4"> ({</span><span style="color:#D8DEE9"> target</span><span style="color:#ECEFF4"> })</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#88C0D0">  doToggle</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">target</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">}</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">form</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">addEventListener</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">  e</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">preventDefault</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">  const</span><span style="color:#D8DEE9"> name</span><span style="color:#81A1C1"> =</span><span style="color:#81A1C1"> new</span><span style="color:#88C0D0"> FormData</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">get</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">  e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">reset</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88C0D0">  createMessage</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">name</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">}</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88C0D0">doToggle</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">toggleSchema</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#88C0D0">createMessage</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">stranger</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Aquí están pasando varias cosillas:</p>
@@ -298,81 +298,81 @@ createMessage(&quot;stranger&quot;);
 <li><em>Grosso modo</em>, estamos declarando variables y métodos en el <em>scope</em> global y estamos ejecutando las órdenes paso a paso de forma imperativa. Esto se puede mitigar mediante la toma de decisiones de arquitectura; pero, ¿y si te digo que los Custom Elements pueden ayudarnos precisamente con esto?</li>
 </ol>
 <p>Veamos el ejemplo usando <em>HTML Web Components</em> (o, como a mí me gusta llamarlos, simplemente <em>Custom Elements</em>):</p>
-<code-hl group="custom-elements-2" name="app.html" open>
+<code-hl group="custom-elements-2" name="app.html" open="">
 
-<pre><code class="language-html">&lt;body&gt;
-  &lt;header&gt;
-    &lt;nav&gt;
-      &lt;ul&gt;
-        &lt;li&gt;Some static content&lt;/li&gt;
-        &lt;li&gt;
-          &lt;toggle-element&gt;
-            &lt;input
-              id=&quot;toggle-schema&quot;
-              type=&quot;checkbox&quot;
-              aria-label=&quot;toggle dark and light mode&quot;
-            /&gt;
-          &lt;/toggle-element&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/nav&gt;
-  &lt;/header&gt;
-  &lt;app-root&gt;
-    &lt;form action=&quot;#&quot;&gt;
-      &lt;input type=&quot;text&quot; placeholder=&quot;Tell us your name&quot; name=&quot;name&quot; /&gt;
-      &lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;
-    &lt;/form&gt;
-    &lt;template id=&quot;message-template&quot;&gt;
-      &lt;p&gt;Hello, &lt;strong&gt;&lt;/strong&gt;! Welcome to my app!&lt;/p&gt;
-    &lt;/template&gt;
-  &lt;/app-root&gt;
-&lt;/body&gt;
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#81A1C1">&lt;body&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;header&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;nav&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;ul&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;li&gt;</span><span style="color:#D8DEE9FF">Some static content</span><span style="color:#81A1C1">&lt;/li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">          &lt;toggle-element&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">            &lt;input</span></span>
+<span class="line"><span style="color:#8FBCBB">              id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">toggle-schema</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#8FBCBB">              type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">checkbox</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#8FBCBB">              aria-label</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">toggle dark and light mode</span><span style="color:#ECEFF4">"</span></span>
+<span class="line"><span style="color:#81A1C1">            /&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">          &lt;/toggle-element&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">        &lt;/li&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;/ul&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/nav&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;/header&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;app-root&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;form</span><span style="color:#8FBCBB"> action</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">#</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;input</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">text</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> placeholder</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">Tell us your name</span><span style="color:#ECEFF4">"</span><span style="color:#8FBCBB"> name</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1"> /&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;button</span><span style="color:#8FBCBB"> type</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span><span style="color:#D8DEE9FF">Send</span><span style="color:#81A1C1">&lt;/button&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/form&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;template</span><span style="color:#8FBCBB"> id</span><span style="color:#ECEFF4">=</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">message-template</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">      &lt;p&gt;</span><span style="color:#D8DEE9FF">Hello, </span><span style="color:#81A1C1">&lt;strong&gt;&lt;/strong&gt;</span><span style="color:#D8DEE9FF">! Welcome to my app!</span><span style="color:#81A1C1">&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">    &lt;/template&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">  &lt;/app-root&gt;</span></span>
+<span class="line"><span style="color:#81A1C1">&lt;/body&gt;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <code-hl group="custom-elements-2" name="app.js">
 
-<pre><code class="language-js">customElements.define(
-  &quot;toggle-element&quot;,
-  class extends HTMLElement {
-    toggle = this.querySelector(&quot;input[type=checkbox]&quot;);
-    doToggle = () =&gt; {
-      document.body.dataset.theme = this.toggle.checked ? &quot;dark&quot; : &quot;light&quot;;
-    };
-
-    connectedCallback() {
-      this.doToggle();
-      this.addEventListener(&quot;change&quot;, this.doToggle);
-    }
-  }
-);
-
-customElements.define(
-  &quot;app-root&quot;,
-  class extends HTMLElement {
-    form = this.querySelector(&quot;form&quot;);
-    messageTemplate = this.querySelector(&quot;template&quot;);
-
-    createMessage = (text) =&gt; {
-      const message = this.messageTemplate.content.cloneNode(true);
-      message.querySelector(&quot;strong&quot;).textContent = text;
-      this.querySelector(&quot;p&quot;)?.replaceWith(message) ??
-        this.appendChild(message);
-    };
-
-    connectedCallback() {
-      this.createMessage(&quot;stranger&quot;);
-      this.form.addEventListener(&quot;submit&quot;, (e) =&gt; {
-        e.preventDefault();
-        const name = new FormData(e.target).get(&quot;name&quot;);
-        e.target.reset();
-
-        this.createMessage(name);
-      });
-    }
-  }
-);
-</code></pre>
+<pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span style="color:#D8DEE9">customElements</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">define</span><span style="color:#D8DEE9FF">(</span></span>
+<span class="line"><span style="color:#ECEFF4">  "</span><span style="color:#A3BE8C">toggle-element</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span></span>
+<span class="line"><span style="color:#81A1C1">  class</span><span style="color:#81A1C1"> extends</span><span style="color:#8FBCBB;font-weight:bold"> HTMLElement</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9FF">    toggle </span><span style="color:#81A1C1">=</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">input[type=checkbox]</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#88C0D0">    doToggle</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> ()</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">      document</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">body</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">dataset</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">theme</span><span style="color:#81A1C1"> =</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">toggle</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">checked</span><span style="color:#81A1C1"> ?</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">dark</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1"> :</span><span style="color:#ECEFF4"> "</span><span style="color:#A3BE8C">light</span><span style="color:#ECEFF4">"</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">    }</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88C0D0">    connectedCallback</span><span style="color:#ECEFF4">()</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#81A1C1">      this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">doToggle</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">      this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">addEventListener</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">change</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">doToggle</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">    }</span></span>
+<span class="line"><span style="color:#ECEFF4">  }</span></span>
+<span class="line"><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D8DEE9">customElements</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">define</span><span style="color:#D8DEE9FF">(</span></span>
+<span class="line"><span style="color:#ECEFF4">  "</span><span style="color:#A3BE8C">app-root</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span></span>
+<span class="line"><span style="color:#81A1C1">  class</span><span style="color:#81A1C1"> extends</span><span style="color:#8FBCBB;font-weight:bold"> HTMLElement</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9FF">    form </span><span style="color:#81A1C1">=</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">form</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9FF">    messageTemplate </span><span style="color:#81A1C1">=</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">template</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88C0D0">    createMessage</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">text</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#81A1C1">      const</span><span style="color:#D8DEE9"> message</span><span style="color:#81A1C1"> =</span><span style="color:#81A1C1"> this</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">messageTemplate</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">content</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">cloneNode</span><span style="color:#D8DEE9FF">(</span><span style="color:#81A1C1">true</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">      message</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">strong</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">textContent</span><span style="color:#81A1C1"> =</span><span style="color:#D8DEE9"> text</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">      this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">querySelector</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">p</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">?.</span><span style="color:#88C0D0">replaceWith</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">message</span><span style="color:#D8DEE9FF">) </span><span style="color:#81A1C1">??</span></span>
+<span class="line"><span style="color:#81A1C1">        this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">appendChild</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">message</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">    }</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#88C0D0">    connectedCallback</span><span style="color:#ECEFF4">()</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#81A1C1">      this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">createMessage</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">stranger</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">      this</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">form</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">addEventListener</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">submit</span><span style="color:#ECEFF4">"</span><span style="color:#ECEFF4">,</span><span style="color:#ECEFF4"> (</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">)</span><span style="color:#81A1C1"> =&gt;</span><span style="color:#ECEFF4"> {</span></span>
+<span class="line"><span style="color:#D8DEE9">        e</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">preventDefault</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#81A1C1">        const</span><span style="color:#D8DEE9"> name</span><span style="color:#81A1C1"> =</span><span style="color:#81A1C1"> new</span><span style="color:#88C0D0"> FormData</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#D8DEE9FF">)</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">get</span><span style="color:#D8DEE9FF">(</span><span style="color:#ECEFF4">"</span><span style="color:#A3BE8C">name</span><span style="color:#ECEFF4">"</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#D8DEE9">        e</span><span style="color:#ECEFF4">.</span><span style="color:#D8DEE9">target</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">reset</span><span style="color:#D8DEE9FF">()</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#81A1C1">        this</span><span style="color:#ECEFF4">.</span><span style="color:#88C0D0">createMessage</span><span style="color:#D8DEE9FF">(</span><span style="color:#D8DEE9">name</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">      }</span><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"><span style="color:#ECEFF4">    }</span></span>
+<span class="line"><span style="color:#ECEFF4">  }</span></span>
+<span class="line"><span style="color:#D8DEE9FF">)</span><span style="color:#81A1C1">;</span></span>
+<span class="line"></span></code></pre>
 </code-hl>
 
 <p>Veamos qué está pasando aquí y por qué está tan jodidamente guapo en comparación con el ejemplo anterior:</p>
@@ -380,17 +380,17 @@ customElements.define(
 <li>Las regiones de hidratación están claramente marcadas por sus respectivos Custom Elements, por lo que podemos hacer las búsquedas directamente dentro de estas regiones de forma declarativa, sin necesidad de andar seleccionándolas primero.</li>
 <li>Los Custom Elements ya nos dan esa organización de la que hablábamos antes. Cada método y propiedad relacionados con la manipulación del DOM están contenidos dentro de una clase, de modo que no estamos contaminando el <em>scope</em> global.</li>
 <li>En relación con el primer punto, dado que ya estamos seleccionando los elementos dentro de un <em>scope</em> muy específico, podemos usar selectores mucho menos complejos.</li>
-<li>Son <strong>Elementos HTML reales</strong>. Hacer un <code>document.querySelector(&quot;toggle-element&quot;).doToggle()</code> es igual de válido y nos dará el mismo resultado que acceder a cualquier método o propiedad nativos de un elemento HTML específico. Esto simplifica el modelo mental de cómo compartir estado en el DOM sin necesidad de recurrir al clásico <em>prop drilling</em> o a librerías de gestión de estado.</li>
+<li>Son <strong>Elementos HTML reales</strong>. Hacer un <code>document.querySelector("toggle-element").doToggle()</code> es igual de válido y nos dará el mismo resultado que acceder a cualquier método o propiedad nativos de un elemento HTML específico. Esto simplifica el modelo mental de cómo compartir estado en el DOM sin necesidad de recurrir al clásico <em>prop drilling</em> o a librerías de gestión de estado.</li>
 <li>Fíjate en el método <code>connectedCallback</code>. Este método se invoca automáticamente cuando el navegador detecta que el elemento está presente en el DOM. Tenemos también la contraparte <code>disconnectedCallback</code>, que hace lo que su propio nombre indica. Esto significa que tenemos <em>lifecycle methods</em> sin necesidad de andar usando un <code>MutationObserver</code> o de ejecutar las acciones respectivas de forma imperativa.</li>
 <li>En líneas generales, cuando el navegador detecta que hemos creado un Custom Element (ya sea a través de <code>document.createElement</code> o bien directamente en el HTML de tu servidor), se encarga automáticamente de crear la instancia respectiva y de llamar a los métodos correspondientes. Me gusta compararlo con CSS. Imagínate que tuvieras que declarar los estilos cada vez que manipulas el DOM. Pues lo mismo, pero para JavaScript.</li>
 </ol>
 <h2>Resumiendo, que es gerundio</h2>
 <p>Espero haber dejado clara mi postura: no es justo comparar los Web Components con un framework. Los Web Components son un conjunto de herramientas nativas de la plataforma web y, como tal, tienen sus cosas raras y decepcionantes también que otros frameworks como <a href="https://lit.dev/">Lit</a> están intentando solventar. Igual que pasó con jQuery y el <code>querySelector</code> en el pasado.</p>
 <p>Lo que sí creo que es un puntazo sobre los Web Components es que ayudan a mitigar los quebraderos de cabeza que nos podemos encontrar en nuestras aplicaciones hechas con vanilla JavaScript. A fin de cuentas, son el resultado de décadas de avance en la plataforma web.</p>
-<p>Puedes usar las tres herramientas, solo un par, o usarlas solo en una pequeña parte de tu aplicación. Lo más bonito que tienen los Web Components es que no van a ser una dependencia más en tu proyecto que prometiste a tu jefe que ibas a actualizar hace ya un año. Son parte de la plataforma web, y por tanto son &quot;gratis&quot;. Puedes usarlos solamente hasta el punto en el que te sientas cómoda y no más allá.</p>
+<p>Puedes usar las tres herramientas, solo un par, o usarlas solo en una pequeña parte de tu aplicación. Lo más bonito que tienen los Web Components es que no van a ser una dependencia más en tu proyecto que prometiste a tu jefe que ibas a actualizar hace ya un año. Son parte de la plataforma web, y por tanto son "gratis". Puedes usarlos solamente hasta el punto en el que te sientas cómoda y no más allá.</p>
 <p>Los Web Components han venido para quedarse. Van mejorando poco a poco; y tan solo pueden seguir mejorando. Quién sabe si en un futuro veremos algún mecanismo de reactividad, alguna manera más ergonómica de atacar la componetización y el renderizado en el cliente, mejoras en accesibilidad y rendimiento, compatibilidad entre navegadores...</p>
 <p>Quién sabe qué nos deparan los avances de la plataforma web. Quizás entonces; y solo entonces, podamos compararlo con React o cualquier otro framework. Hasta entonces, tan solo podemos compararlos con los miles de mecanismos que ya encontramos en la plataforma web.</p>
-
+</body>
             </article>
         </main><template id="copy-code">
   <button class="copy" aria-label="Copy code">
@@ -447,6 +447,12 @@ customElements.define(
   </button>
 </template>
 
+<template id="code-hl">
+  <details>
+    <summary></summary>
+    <slot></slot>
+  </details>
+</template>
     </view-partial><footer>
     <div class="container">
         <hr />
