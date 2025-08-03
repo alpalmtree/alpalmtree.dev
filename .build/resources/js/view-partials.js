@@ -29,7 +29,7 @@ const replaceDOM = async (detail) => {
   }
   scheduleRemove.forEach((el) => el.remove());
   document.querySelector("view-partial").replaceWith(viewPartial);
-  document.querySelector('header').scrollIntoView()
+  document.querySelector("header").scrollIntoView();
 };
 
 globalThis.addEventListener("page:changed", async ({ detail }) => {
@@ -46,25 +46,20 @@ globalThis.addEventListener("popstate", () => {
   );
 });
 
-customElements.define(
-  "view-link",
-  class extends HTMLElement {
-    #to = this.querySelector("a").getAttribute("href");
+globalThis.addEventListener("click", (e) => {
+  if (e.target?.tagName !== "A") return;
+  if (e.target.origin !== globalThis.location.origin) return;
 
-    connectedCallback() {
-      this.addEventListener("click", (e) => {
-        e.preventDefault();
-        globalThis.history.pushState("", null, this.#to);
-        this.dispatchEvent(
-          new CustomEvent("page:changed", {
-            detail: this.#to,
-            bubbles: true,
-          }),
-        );
-      });
-    }
-  },
-);
+  e.preventDefault();
+
+  const to = e.target.getAttribute("href");
+  globalThis.history.pushState("", null, to);
+  globalThis.dispatchEvent(
+    new CustomEvent("page:changed", {
+      detail: to
+    }),
+  );
+});
 
 customElements.define(
   "view-partial",
